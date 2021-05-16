@@ -1,61 +1,47 @@
-# docker-laravel 🐳
+# 挫折した計算問題の襲来
 
-![License](https://img.shields.io/github/license/ucan-lab/docker-laravel?color=f05340)
-![Stars](https://img.shields.io/github/stars/ucan-lab/docker-laravel?color=f05340)
-![Issues](https://img.shields.io/github/issues/ucan-lab/docker-laravel?color=f05340)
-![Forks](https://img.shields.io/github/forks/ucan-lab/docker-laravel?color=f05340)
+## 概要
 
-## Introduction
+小中学生レベルの計算問題を練習できるアプリ。  
+コロナ禍の影響を受けない学習の機会を提供する。
 
-Build a simple laravel development environment with docker-compose.
+## 機能
 
-## Usage
+- 計算問題機能
+    - 足し算引き算等の四則演算を出題する。
+    - 桁数、繰り上がりの有無、小数点などの計算の難易度を指定できる。
+    - 指定の問題数を解き終わったら成績を表示する。
+    - 問題数と解答時間を記録する。
 
-```bash
-$ git clone git@github.com:ucan-lab/docker-laravel.git
-$ cd docker-laravel
-$ make create-project # Install the latest Laravel project
-$ make install-recommend-packages # Not required
-```
 
-http://localhost
+- ログイン機能
+    - ユーザーのemail, password, username, 生年月日を入力し登録する。
+    - ユーザーのemail, passwordを入力しログインできる。
+    - 可能であれば他のSNSと連携し登録ができる。
+    - 可能であればユーザーがマイページを公開したくなければ非ログインユーザーがマイページを見れなくする。
 
-Read this [Makefile](https://github.com/ucan-lab/docker-laravel/blob/master/Makefile).
 
-## Tips
+- 成績表示機能
+    - 自分の成績やほかのユーザーの順位などを見ることができる。
+    - ダッシュボード形式で自分の成績を閲覧できる。
+    - 可能であれば直近の成績をグラフ表示する。
 
-Read this [Wiki](https://github.com/ucan-lab/docker-laravel/wiki).
 
-## Container structure
+- ユーザー情報表示機能
+    - ユーザーの情報をマイページで確認できる。
+    - ユーザーのプロフィール画像を登録し表示できる。
 
-```bash
-├── app
-├── web
-└── db
-```
+## 構成技術
 
-### app container
+### Application
 
-- Base image
-  - [php](https://hub.docker.com/_/php):8.0-fpm-buster
-  - [composer](https://hub.docker.com/_/composer):2.0
+- PHP 8系
+- Laravel 8系
+- Vue 2系
+- Mysql
 
-### web container
+### Infra
 
-- Base image
-  - [nginx](https://hub.docker.com/_/nginx):1.18-alpine
-  - [node](https://hub.docker.com/_/node):14.2-alpine
-
-### db container
-
-- Base image
-  - [mysql](https://hub.docker.com/_/mysql):8.0
-
-#### Persistent MySQL Storage
-
-By default, the [named volume](https://docs.docker.com/compose/compose-file/#volumes) is mounted, so MySQL data remains even if the container is destroyed.
-If you want to delete MySQL data intentionally, execute the following command.
-
-```bash
-$ docker-compose down -v && docker-compose up
-```
+- Docker
+- Vagrant (for local dev only)
+- AWS
