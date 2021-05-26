@@ -59,6 +59,8 @@ jobs:
       - run:
           working_directory: ./backend
           command: php artisan migrate --env=testing --database=mysql_test --force
+
+      # run tests
       - run:
           working_directory: ./backend
           command: vendor/bin/phpunit
