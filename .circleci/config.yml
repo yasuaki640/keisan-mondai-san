@@ -54,18 +54,20 @@ jobs:
           working_directory: ./backend
           command: cp .env.example .env
       - run:
+          name: create jwt secret
           working_directory: ./backend
           command: php artisan jwt:secret
       - run:
+          name: run migration
           working_directory: ./backend
           command: php artisan migrate --env=testing --database=mysql_test --force
 
-      # run tests
       - run:
+          name: run phpunit tests
           working_directory: ./backend
           command: vendor/bin/phpunit
 
-      # check if can reset migrate
       - run:
+          name: check if can reset migrate
           working_directory: ./backend
           command: php artisan migrate:rollback --env=testing --database=mysql_test --force
