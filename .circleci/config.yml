@@ -64,3 +64,8 @@ jobs:
       - run:
           working_directory: ./backend
           command: vendor/bin/phpunit
+
+      # check if can reset migrate
+      - run:
+          working_directory: ./backend
+          command: php artisan migrate:rollback --env=testing --database=mysql_test --force
