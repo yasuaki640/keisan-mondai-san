@@ -17,6 +17,9 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('sentence');
             $table->decimal('answer');
+            $table->tinyInteger('has_decimal_point');
+            $table->enum('operator', ['add', 'sub', 'multi', 'divide']);
+            $table->tinyInteger('has_minus');
             $table->timestamps();
             $table->softDeletes();
         });
