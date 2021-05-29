@@ -8,15 +8,15 @@
     <p class="subtitle is-7">* は入力必須です。</p>
 
     <b-field label="お名前 *">
-      <b-input></b-input>
+      <b-input v-model="item.name"></b-input>
     </b-field>
 
     <b-field label="メール" message="8文字以上  半角英数字">
-      <b-input type="email" maxlength="30"></b-input>
+      <b-input v-model="item.email" type="email"></b-input>
     </b-field>
 
     <b-field label="パスワード *">
-      <b-input type="password"></b-input>
+      <b-input v-model="item.password" type="password"></b-input>
     </b-field>
 
     <b-button type="is-primary">登録</b-button>
@@ -26,5 +26,17 @@
 <script>
 export default {
   name: 'HomePage',
+
+  data() {
+    return {
+      item: {
+        name: '',
+        email: '',
+        password: '',
+      },
+    }
+  },
+
+  methods: {},
 }
 </script>
