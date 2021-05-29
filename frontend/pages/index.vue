@@ -1,34 +1,30 @@
 <template>
-  <section class="section">
-    <div class="columns is-mobile">
-      <card title="Free" icon="github">
-        Open source on <a href="https://github.com/buefy/buefy"> GitHub </a>
-      </card>
+  <section>
+    <h1 class="title">計算問題さん</h1>
+    <h4 class="subtitle is-6 has-text-grey">
+      このアプリは小学生から中学生が対象の、四則演算を練習できるアプリです。
+    </h4>
 
-      <card title="Responsive" icon="cellphone-link">
-        <b class="has-text-grey"> Every </b> component is responsive
-      </card>
+    <p class="subtitle is-7">* は入力必須です。</p>
 
-      <card title="Modern" icon="alert-decagram">
-        Built with <a href="https://vuejs.org/"> Vue.js </a> and
-        <a href="http://bulma.io/"> Bulma </a>
-      </card>
+    <b-field label="お名前 *">
+      <b-input></b-input>
+    </b-field>
 
-      <card title="Lightweight" icon="arrange-bring-to-front">
-        No other internal dependency
-      </card>
-    </div>
+    <b-field label="メール" message="8文字以上  半角英数字">
+      <b-input type="email" maxlength="30"></b-input>
+    </b-field>
+
+    <b-field label="パスワード *">
+      <b-input type="password"></b-input>
+    </b-field>
+
+    <b-button type="is-primary">登録</b-button>
   </section>
 </template>
 
 <script>
-import Card from '~/components/Card'
-
 export default {
   name: 'HomePage',
-
-  components: {
-    Card,
-  },
 }
 </script>
