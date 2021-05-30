@@ -25,6 +25,18 @@
         label="パスワード (確認)"
       />
 
+      <BRadioWithValidation
+        v-model="confirmation"
+        rules="required"
+        name="性別"
+        type="radio"
+        label="性別"
+      >
+        <b-radio v-model="choices" native-value="Coffee">Coffee</b-radio>
+        <b-radio v-model="choices" native-value="Tea">Tea</b-radio>
+        <b-radio v-model="choices" native-value="Soda">Soda</b-radio>
+      </BRadioWithValidation>
+
       <div class="buttons">
         <button class="button is-success" @click="handleSubmit(submit)">
           <span class="icon is-small">
@@ -46,11 +58,13 @@
 
 <script>
 import BInputWithValidation from './inputs/BInputWithValidation'
+import BRadioWithValidation from '~/components/inputs/BRadioWithValidation'
 
 export default {
   name: 'BuefyForm',
   components: {
     BInputWithValidation,
+    BRadioWithValidation,
   },
   data() {
     return {
