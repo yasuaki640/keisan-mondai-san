@@ -4,16 +4,16 @@
     <section class="section">
       <BInputWithValidation
         v-model="email"
-        rules="required|email"
+        rules="email"
         type="email"
-        label="Email"
+        label="メール"
       />
 
       <BInputWithValidation
         v-model="password"
         rules="required"
         type="password"
-        label="Password"
+        label="パスワード *"
         vid="password"
       />
 
@@ -22,7 +22,7 @@
         rules="required|confirmed:password"
         name="Password"
         type="password"
-        label="Confirm Password"
+        label="パスワード (確認)"
       />
 
       <BSelectWithValidation v-model="subject" rules="required" label="Subject">
@@ -30,12 +30,6 @@
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
       </BSelectWithValidation>
-
-      <BCheckboxesWithValidation rules="required|length:2" label="Drinks">
-        <b-checkbox v-model="choices" native-value="Coffee">Coffee</b-checkbox>
-        <b-checkbox v-model="choices" native-value="Tea">Tea</b-checkbox>
-        <b-checkbox v-model="choices" native-value="Soda">Soda</b-checkbox>
-      </BCheckboxesWithValidation>
 
       <div class="buttons">
         <button class="button is-success" @click="handleSubmit(submit)">
@@ -59,14 +53,12 @@
 <script>
 import BSelectWithValidation from './inputs/BSelectWithValidation'
 import BInputWithValidation from './inputs/BInputWithValidation'
-import BCheckboxesWithValidation from './inputs/BCheckboxesWithValidation'
 
 export default {
   name: 'BuefyForm',
   components: {
     BSelectWithValidation,
     BInputWithValidation,
-    BCheckboxesWithValidation,
   },
   data() {
     return {
