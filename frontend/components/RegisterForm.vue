@@ -32,9 +32,8 @@
         type="radio"
         label="性別"
       >
-        <b-radio v-model="choices" native-value="Coffee">Coffee</b-radio>
-        <b-radio v-model="choices" native-value="Tea">Tea</b-radio>
-        <b-radio v-model="choices" native-value="Soda">Soda</b-radio>
+        <b-radio v-model="choices" native-value="male">男</b-radio>
+        <b-radio v-model="choices" native-value="female">女</b-radio>
       </BRadioWithValidation>
 
       <div class="buttons">
