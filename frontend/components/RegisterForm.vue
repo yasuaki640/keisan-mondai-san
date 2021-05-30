@@ -25,12 +25,6 @@
         label="パスワード (確認)"
       />
 
-      <BSelectWithValidation v-model="subject" rules="required" label="Subject">
-        <option value>None</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-      </BSelectWithValidation>
-
       <div class="buttons">
         <button class="button is-success" @click="handleSubmit(submit)">
           <span class="icon is-small">
@@ -51,13 +45,11 @@
 </template>
 
 <script>
-import BSelectWithValidation from './inputs/BSelectWithValidation'
 import BInputWithValidation from './inputs/BInputWithValidation'
 
 export default {
   name: 'BuefyForm',
   components: {
-    BSelectWithValidation,
     BInputWithValidation,
   },
   data() {
