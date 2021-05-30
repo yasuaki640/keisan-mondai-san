@@ -22,7 +22,14 @@
         rules="required|confirmed:password"
         name="Password"
         type="password"
-        label="パスワード (確認)"
+        label="パスワード (確認) *"
+      />
+
+      <BInputWithValidation
+        rules="required"
+        name="BOD"
+        type="date"
+        label="生年月日 *"
       />
 
       <BRadioWithValidation
@@ -30,7 +37,7 @@
         rules="required"
         name="性別"
         type="radio"
-        label="性別"
+        label="性別 *"
       >
         <b-radio v-model="choices" native-value="male">男</b-radio>
         <b-radio v-model="choices" native-value="female">女</b-radio>
