@@ -26,9 +26,9 @@
       />
 
       <BInputWithValidation
-        v-model="item.bod"
+        v-model="item.d_o_b"
         rules="required"
-        name="bod"
+        name="d_o_b"
         type="date"
         label="生年月日"
       />
@@ -80,7 +80,7 @@ export default {
         password: '',
         password_confirmation: '',
         sex: '',
-        bod: '',
+        d_o_b: '',
       },
     }
   },
@@ -93,7 +93,7 @@ export default {
       this.password = ''
       this.password_confirmation = ''
       this.sex = ''
-      this.bod = ''
+      this.d_o_b = ''
       requestAnimationFrame(() => {
         this.$refs.observer.reset()
       })
