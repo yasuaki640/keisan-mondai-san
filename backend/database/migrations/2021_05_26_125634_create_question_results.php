@@ -21,7 +21,7 @@ class CreateQuestionResults extends Migration
             $table->foreignId('question_id')->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->tinyInteger('result');
+            $table->enum('result', ['correct', 'wrong', 'non-response'])
             $table->timestamps();
             $table->softDeletes();
         });
