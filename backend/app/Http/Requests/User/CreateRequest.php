@@ -24,7 +24,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>['required','string']
+            'name' => ['required', 'string'],
+            'd_o_b' => ['required', 'date', 'before_or_equal:today']
         ];
     }
 }
