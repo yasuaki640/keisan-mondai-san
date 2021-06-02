@@ -37,4 +37,18 @@ class UserControllerTest extends TestCase
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
+
+    public function test_create_success_validation_empty_email()
+    {
+        $response = $this->postJson('api/users', [
+            'name' => 'test',
+            'd_o_b' => '1994-09-07',
+            'sex' => 0,
+            'email' => '',
+            'password' => 'password',
+            'password_confirmation'
+        ], $this->header);
+
+        $response->assertOk();
+    }
 }

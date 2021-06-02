@@ -25,7 +25,9 @@ class CreateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'd_o_b' => ['required', 'date', 'before_or_equal:today']
+            'd_o_b' => ['required', 'date', 'before_or_equal:today'],
+            'sex' => ['required'],
+            'email' => ['nullable', 'email']
         ];
     }
 }
