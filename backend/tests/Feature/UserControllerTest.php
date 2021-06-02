@@ -46,7 +46,7 @@ class UserControllerTest extends TestCase
             'sex' => 0,
             'email' => '',
             'password' => 'password',
-            'password_confirmation'
+            'password_confirmation' => 'password'
         ], $this->header);
 
         $response->assertOk();

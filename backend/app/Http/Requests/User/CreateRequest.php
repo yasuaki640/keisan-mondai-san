@@ -27,7 +27,8 @@ class CreateRequest extends FormRequest
             'name' => ['required', 'string'],
             'd_o_b' => ['required', 'date', 'before_or_equal:today'],
             'sex' => ['required'],
-            'email' => ['nullable', 'email']
+            'email' => ['nullable', 'email'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
 }
