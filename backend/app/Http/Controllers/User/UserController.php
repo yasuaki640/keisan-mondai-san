@@ -28,7 +28,7 @@ class UserController extends Controller
     public function create(CreateRequest $request): JsonResponse
     {
         $this->service->create($request->all());
-        return response()->json([], 201);
+        return response()->json([], Response::HTTP_CREATED);
     }
 
     public function store(Request $request)
