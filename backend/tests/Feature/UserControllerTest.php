@@ -2,11 +2,14 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public $header = ['Accept' => 'application/json'];
 
     public function test_create_fail_validation_no_name()
@@ -76,5 +79,12 @@ class UserControllerTest extends TestCase
         ], $this->header);
 
         $response->assertCreated();
+
+        $this->assertDatabaseHas('users', [
+            'id' => $response->json('id'),
+            'name' => 'test',
+            'd_o_b' => '1994-09-07',
+            'sex' => 0,
+        ]);
     }
 }
