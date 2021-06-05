@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
@@ -49,7 +47,7 @@ class UserControllerTest extends TestCase
             'password_confirmation' => 'password'
         ], $this->header);
 
-        $response->assertOk();
+        $response->assertCreated();
     }
 
     public function test_create_fail_validation_password_confirm()
@@ -64,5 +62,19 @@ class UserControllerTest extends TestCase
         ], $this->header);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    public function test_create_success()
+    {
+        $response = $this->postJson('api/users', [
+            'name' => 'test',
+            'd_o_b' => '1994-09-07',
+            'sex' => 0,
+            'email' => '',
+            'password' => 'password',
+            'password_confirmation' => 'password'
+        ], $this->header);
+
+        $response->assertCreated();
     }
 }

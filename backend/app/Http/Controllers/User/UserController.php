@@ -5,14 +5,16 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateRequest;
-use App\Service\UserSerivce;
+use App\Service\User\UserService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-    private $service;
+    private UserService $service;
 
-    public function __construct(UserSerivce $service)
+    public function __construct(UserService $service)
     {
         $this->service = $service;
     }
@@ -23,9 +25,10 @@ class UserController extends Controller
     }
 
 
-    public function create(CreateRequest $request)
+    public function create(CreateRequest $request): JsonResponse
     {
-
+        $this->service->create($request->all());
+        return response()->json([], 201);
     }
 
     public function store(Request $request)
