@@ -4,7 +4,7 @@ namespace App\Http\Resources\User;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CreateResource extends JsonResource
+class StoreResource extends JsonResource
 {
     /**
      * CreateResource constructor.

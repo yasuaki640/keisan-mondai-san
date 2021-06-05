@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\CreateRequest;
-use App\Http\Resources\User\CreateResource;
+use App\Http\Requests\User\StoreRequest;
+use App\Http\Resources\User\StoreResource;
 use App\Service\User\UserService;
 use App\Service\User\UserServiceImpl;
 use Illuminate\Http\JsonResponse;
@@ -27,15 +27,10 @@ class UserController extends Controller
     }
 
 
-    public function create(CreateRequest $request): JsonResponse
+    public function store(StoreRequest $request): JsonResponse
     {
         $id = $this->service->create($request->all());
-        return response()->json(new CreateResource($id), Response::HTTP_CREATED);
-    }
-
-    public function store(Request $request)
-    {
-        //
+        return response()->json(new StoreResource($id), Response::HTTP_CREATED);
     }
 
     public function show(int $id)
