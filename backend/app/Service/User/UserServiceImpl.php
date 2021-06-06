@@ -20,4 +20,9 @@ class UserServiceImpl implements UserService
     {
         return $this->repository->create($params);
     }
+
+    public function index()
+    {
+        return $this->repository->findAll();
+    }
 }

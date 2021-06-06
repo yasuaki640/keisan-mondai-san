@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -83,5 +84,14 @@ class UserControllerTest extends TestCase
             'd_o_b' => '1994-09-07',
             'sex' => 0,
         ]);
+    }
+
+    public function test_index_success()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->getJson('api/users');
+
+        $response->assertOk();
     }
 }

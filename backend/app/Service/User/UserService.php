@@ -7,4 +7,6 @@ namespace App\Service\User;
 interface UserService
 {
     public function store(array $params): int;
+
+    public function index();
 }

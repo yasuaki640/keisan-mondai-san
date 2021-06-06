@@ -23,8 +23,8 @@ class UserController extends Controller
 
     public function index()
     {
-//        $users = $this->service->
-//        return \response()->json()
+        $users = $this->service->index();
+        return response()->json();
     }
 
 
