@@ -6,6 +6,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Resources\User\StoreResource;
+use App\Http\Resources\User\UserResource;
 use App\Service\User\UserService;
 use App\Service\User\UserServiceImpl;
 use Illuminate\Http\JsonResponse;
@@ -24,9 +25,8 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->service->index();
-        return response()->json();
+        return response()->json(UserResource::collection($users));
     }
-
 
     public function store(StoreRequest $request): JsonResponse
     {

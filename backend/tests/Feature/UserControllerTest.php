@@ -88,10 +88,16 @@ class UserControllerTest extends TestCase
 
     public function test_index_success()
     {
-        $user = User::factory()->create();
+        $users = User::factory()->count(3)->create();
 
-        $response = $this->actingAs($user)->getJson('api/users');
+        $response = $this->actingAs($users->first())
+            ->getJson('api/users');
 
         $response->assertOk();
+        $response->assertJson([
+            ['id' => $users[0]->id, 'name' => $users[0]->name],
+            ['id' => $users[1]->id, 'name' => $users[1]->name],
+            ['id' => $users[2]->id, 'name' => $users[2]->name],
+        ]);
     }
 }
