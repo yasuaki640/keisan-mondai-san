@@ -114,4 +114,14 @@ class UserControllerTest extends TestCase
             'name' => $users[1]->name
         ]);
     }
+
+    public function test_show_fail_not_existing_user()
+    {
+        $users = User::factory()->count(3)->create();
+
+        $response = $this->actingAs($users->first())
+            ->getJson('api/users/' . 999);
+
+        $response->assertNotFound();
+    }
 }
