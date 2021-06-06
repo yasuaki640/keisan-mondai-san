@@ -10,7 +10,7 @@ class UserControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_create_fail_validation_no_name()
+    public function test_store_fail_validation_no_name()
     {
         $response = $this->postJson('api/users', [
             'd_o_b' => '1994-09-07',
@@ -23,7 +23,7 @@ class UserControllerTest extends TestCase
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
-    public function test_create_fail_validation_illegal_d_o_b()
+    public function test_store_fail_validation_illegal_d_o_b()
     {
         $response = $this->postJson('api/users', [
             'name' => 'test',
@@ -37,7 +37,7 @@ class UserControllerTest extends TestCase
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
-    public function test_create_success_validation_empty_email()
+    public function test_store_success_validation_empty_email()
     {
         $response = $this->postJson('api/users', [
             'name' => 'test',
@@ -51,7 +51,7 @@ class UserControllerTest extends TestCase
         $response->assertCreated();
     }
 
-    public function test_create_fail_validation_password_confirm()
+    public function test_store_fail_validation_password_confirm()
     {
         $response = $this->postJson('api/users', [
             'name' => 'test',
@@ -65,7 +65,7 @@ class UserControllerTest extends TestCase
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
-    public function test_create_success()
+    public function test_store_success()
     {
         $response = $this->postJson('api/users', [
             'name' => 'test',

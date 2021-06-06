@@ -16,7 +16,7 @@ class UserServiceImpl implements UserService
         $this->repository = $repository;
     }
 
-    public function create(array $params): int
+    public function store(array $params): int
     {
         return $this->repository->create($params);
     }

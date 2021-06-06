@@ -23,13 +23,14 @@ class UserController extends Controller
 
     public function index()
     {
-        //
+//        $users = $this->service->
+//        return \response()->json()
     }
 
 
     public function store(StoreRequest $request): JsonResponse
     {
-        $id = $this->service->create($request->all());
+        $id = $this->service->store($request->all());
         return response()->json(new StoreResource($id), Response::HTTP_CREATED);
     }
 
