@@ -10,8 +10,6 @@ class UserControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public $header = ['Accept' => 'application/json'];
-
     public function test_create_fail_validation_no_name()
     {
         $response = $this->postJson('api/users', [
@@ -20,7 +18,7 @@ class UserControllerTest extends TestCase
             'email' => 'y@g.com',
             'password' => 'password',
             'password_confirmation'
-        ], $this->header);
+        ]);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
@@ -34,7 +32,7 @@ class UserControllerTest extends TestCase
             'email' => 'y@g.com',
             'password' => 'password',
             'password_confirmation'
-        ], $this->header);
+        ]);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
@@ -48,7 +46,7 @@ class UserControllerTest extends TestCase
             'email' => '',
             'password' => 'password',
             'password_confirmation' => 'password'
-        ], $this->header);
+        ]);
 
         $response->assertCreated();
     }
@@ -62,7 +60,7 @@ class UserControllerTest extends TestCase
             'email' => '',
             'password' => 'password',
             'password_confirmation' => '12341234'
-        ], $this->header);
+        ]);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
@@ -76,10 +74,9 @@ class UserControllerTest extends TestCase
             'email' => '',
             'password' => 'password',
             'password_confirmation' => 'password'
-        ], $this->header);
+        ]);
 
         $response->assertCreated();
-
         $this->assertDatabaseHas('users', [
             'id' => $response->json('id'),
             'name' => 'test',
