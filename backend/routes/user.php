@@ -22,6 +22,7 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('users')->group(function () {
         Route::get('', [UserController::class, 'index']);
         Route::get('{user}', [UserController::class, 'show']);
+        Route::put('{user}', [UserController::class, 'edit']);
     });
 });
 
