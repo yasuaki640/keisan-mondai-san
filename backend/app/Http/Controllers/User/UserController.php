@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\EditRequest;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Resources\User\StoreResource;
 use App\Http\Resources\User\UserResource;
@@ -40,7 +41,7 @@ class UserController extends Controller
         return response()->json(new UserResource($user));
     }
 
-    public function edit(int $id)
+    public function edit(EditRequest $request, User $user)
     {
 
     }

@@ -101,6 +101,16 @@ class UserControllerTest extends TestCase
         ]);
     }
 
+    public function test_show_fail_not_existing_user()
+    {
+        $users = User::factory()->count(3)->create();
+
+        $response = $this->actingAs($users->first())
+            ->getJson('api/users/' . 999);
+
+        $response->assertNotFound();
+    }
+
     public function test_show_success()
     {
         $users = User::factory()->count(3)->create();
@@ -115,13 +125,19 @@ class UserControllerTest extends TestCase
         ]);
     }
 
-    public function test_show_fail_not_existing_user()
+    public function test_edit_fail_validation_not_duplicate_name()
     {
-        $users = User::factory()->count(3)->create();
+        $user = User::factory()->create();
 
-        $response = $this->actingAs($users->first())
-            ->getJson('api/users/' . 999);
+        $response = $this->actingAs($user)
+            ->putJson('api/users/' . $user->getKey(), [
+                'name' => $user->name
+            ]);
 
-        $response->assertNotFound();
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+
+        $response->assertJson([
+            'errors' => ['name' => ['The name has already been taken.']]
+        ]);
     }
 }
