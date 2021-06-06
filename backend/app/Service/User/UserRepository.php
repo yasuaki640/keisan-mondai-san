@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class UserRepository
 {
-
     public function create(array $paramas): int
     {
         return User::create($paramas)->id;

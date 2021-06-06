@@ -100,4 +100,18 @@ class UserControllerTest extends TestCase
             ['id' => $users[2]->id, 'name' => $users[2]->name],
         ]);
     }
+
+    public function test_show_success()
+    {
+        $users = User::factory()->count(3)->create();
+
+        $response = $this->actingAs($users->first())
+            ->getJson('api/users/' . $users[1]->id);
+
+        $response->assertOk();
+        $response->assertJson([
+            'id' => $users[1]->id,
+            'name' => $users[1]->name
+        ]);
+    }
 }

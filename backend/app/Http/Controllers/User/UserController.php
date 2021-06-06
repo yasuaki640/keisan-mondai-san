@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Resources\User\StoreResource;
 use App\Http\Resources\User\UserResource;
+use App\Models\User;
 use App\Service\User\UserService;
 use App\Service\User\UserServiceImpl;
 use Illuminate\Http\JsonResponse;
@@ -22,7 +23,7 @@ class UserController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(): JsonResponse
     {
         $users = $this->service->index();
         return response()->json(UserResource::collection($users));
@@ -34,9 +35,9 @@ class UserController extends Controller
         return response()->json(new StoreResource($id), Response::HTTP_CREATED);
     }
 
-    public function show(int $id)
+    public function show(User $user): JsonResponse
     {
-        //
+        return response()->json(new UserResource($user));
     }
 
     public function edit(int $id)
