@@ -125,19 +125,21 @@ class UserControllerTest extends TestCase
         ]);
     }
 
-    public function test_edit_fail_validation_not_duplicate_name()
+    public function test_edit_fail_validation_password_length_under_7()
     {
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
             ->putJson('api/users/' . $user->getKey(), [
-                'name' => $user->name
+                'name' => 'yasu',
+                'password' => '1234567',
+                'password_confirmation' => '1234567'
             ]);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
         $response->assertJson([
-            'errors' => ['name' => ['The name has already been taken.']]
+            'errors' => ['password' => ['The password must be at least 8 characters.']]
         ]);
     }
 }
