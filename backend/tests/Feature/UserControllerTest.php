@@ -156,9 +156,32 @@ class UserControllerTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-
         $response->assertJson([
             'errors' => ['password' => ['The password must be at least 8 characters.']]
+        ]);
+    }
+
+    public function test_edit_success()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->putJson('api/users/' . $user->getKey(), [
+                'name' => 'yasu',
+                'd_o_b' => '1994-09-07',
+                'sex' => '1',
+                'email' => 'yasu@gmail.com',
+                'password' => '12345678',
+                'password_confirmation' => '12345678'
+            ]);
+
+        $response->assertOk();
+        $this->assertDatabaseHas('users', [
+            'id' => $user->getKey(),
+            'name' => 'yasu',
+            'd_o_b' => '1994-09-07',
+            'sex' => '1',
+            'email' => 'yasu@gmail.com',
         ]);
     }
 }
