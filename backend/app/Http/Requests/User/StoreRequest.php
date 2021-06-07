@@ -25,7 +25,7 @@ class StoreRequest extends ApiRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string','unique:users'],
             'd_o_b' => ['required', 'date', 'before_or_equal:today'],
             'sex' => ['nullable', 'integer', 'min:0', 'max:1'],
             'email' => ['nullable', 'email'],

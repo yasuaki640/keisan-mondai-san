@@ -66,6 +66,25 @@ class UserControllerTest extends TestCase
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
+    public function test_store_fail_validation_duplicate_name()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->postJson('api/users', [
+            'name' => $user->name,
+            'd_o_b' => '1994-09-07',
+            'sex' => 0,
+            'email' => '',
+            'password' => 'password',
+            'password_confirmation' => 'password'
+        ]);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertJson([
+            'errors' => ['name' => ['The name has already been taken.']]
+        ]);
+    }
+
     public function test_store_success()
     {
         $response = $this->postJson('api/users', [
