@@ -24,7 +24,7 @@ class EditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'unique:users'],
+            'name' => ['required', 'string'],
             'd_o_b' => ['nullable', 'date_format:Y-m-d', 'before_or_equal:today'],
             'sex' => ['nullable', 'integer', 'min:0', 'max:1'],
             'email' => ['nullable', 'email', 'unique:users'],

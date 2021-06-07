@@ -27,7 +27,7 @@ class StoreRequest extends ApiRequest
         return [
             'name' => ['required', 'string'],
             'd_o_b' => ['required', 'date', 'before_or_equal:today'],
-            'sex' => ['required'],
+            'sex' => ['nullable', 'integer', 'min:0', 'max:1'],
             'email' => ['nullable', 'email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
