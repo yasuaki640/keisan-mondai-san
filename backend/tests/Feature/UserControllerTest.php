@@ -176,6 +176,13 @@ class UserControllerTest extends TestCase
             ]);
 
         $response->assertOk();
+        $response->assertJson([
+            'id' => $user->getKey(),
+            'name' => 'yasu',
+            'd_o_b' => '1994-09-07',
+            'sex' => '1',
+            'email' => 'yasu@gmail.com',
+        ]);
         $this->assertDatabaseHas('users', [
             'id' => $user->getKey(),
             'name' => 'yasu',

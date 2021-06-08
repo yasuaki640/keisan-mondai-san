@@ -23,6 +23,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('', [UserController::class, 'index']);
         Route::get('{user}', [UserController::class, 'show']);
         Route::put('{id}', [UserController::class, 'update']);
+        Route::delete('{id}', [UserController::class, 'destroy']);
     });
 });
 

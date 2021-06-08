@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\EditRequest;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Resources\User\StoreResource;
+use App\Http\Resources\User\UpdateResource;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
 use App\Service\User\UserService;
@@ -43,6 +44,7 @@ class UserController extends Controller
     public function update(EditRequest $request, int $id)
     {
         $user = $this->service->update($id, $request->all());
+        return response()->json(new UpdateResource($user));
     }
 
     public function destroy($id)
