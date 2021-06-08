@@ -4,8 +4,10 @@
 namespace App\Service\User;
 
 
+use App\Models\User;
 use App\Service\User\UserRepository;
 use App\Service\User\UserService;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserServiceImpl implements UserService
 {
@@ -21,8 +23,13 @@ class UserServiceImpl implements UserService
         return $this->repository->create($params);
     }
 
-    public function index()
+    public function index(): Collection|array
     {
         return $this->repository->findAll();
+    }
+
+    public function update(int $id, array $params): User
+    {
+        return $this->repository->update($id, $params);
     }
 }

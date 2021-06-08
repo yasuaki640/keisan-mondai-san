@@ -144,7 +144,7 @@ class UserControllerTest extends TestCase
         ]);
     }
 
-    public function test_edit_fail_validation_password_length_under_7()
+    public function test_update_fail_validation_password_length_under_7()
     {
         $user = User::factory()->create();
 
@@ -161,7 +161,7 @@ class UserControllerTest extends TestCase
         ]);
     }
 
-    public function test_edit_success()
+    public function test_update_success()
     {
         $user = User::factory()->create();
 

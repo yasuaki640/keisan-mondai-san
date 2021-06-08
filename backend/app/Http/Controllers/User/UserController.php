@@ -12,7 +12,6 @@ use App\Models\User;
 use App\Service\User\UserService;
 use App\Service\User\UserServiceImpl;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UserController extends Controller
@@ -41,14 +40,9 @@ class UserController extends Controller
         return response()->json(new UserResource($user));
     }
 
-    public function edit(EditRequest $request, User $user)
+    public function update(EditRequest $request, int $id)
     {
-
-    }
-
-    public function update(Request $request, int $id)
-    {
-        //
+        $user = $this->service->update($id, $request->all());
     }
 
     public function destroy($id)
