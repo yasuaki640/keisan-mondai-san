@@ -8,7 +8,7 @@ use App\Http\Requests\User\EditRequest;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Resources\User\StoreResource;
 use App\Http\Resources\User\UpdateResource;
-use App\Http\Resources\User\UserResource;
+use App\Http\Resources\User\IndexResource;
 use App\Models\User;
 use App\Service\User\UserService;
 use App\Service\User\UserServiceImpl;
@@ -27,7 +27,7 @@ class UserController extends Controller
     public function index(): JsonResponse
     {
         $users = $this->service->index();
-        return response()->json(UserResource::collection($users));
+        return response()->json(IndexResource::collection($users));
     }
 
     public function store(StoreRequest $request): JsonResponse
@@ -38,7 +38,7 @@ class UserController extends Controller
 
     public function show(User $user): JsonResponse
     {
-        return response()->json(new UserResource($user));
+        return response()->json(new IndexResource($user));
     }
 
     public function update(EditRequest $request, int $id)
