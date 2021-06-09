@@ -32,4 +32,9 @@ class UserServiceImpl implements UserService
     {
         return $this->repository->update($id, $params);
     }
+
+    public function destroy(int $id): void
+    {
+        $this->repository->destroy($id);
+    }
 }

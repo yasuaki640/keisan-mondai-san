@@ -14,4 +14,6 @@ interface UserService
     public function index(): Collection|array;
 
     public function update(int $id, array $params): User;
+
+    public function destroy(int $id): void;
 }

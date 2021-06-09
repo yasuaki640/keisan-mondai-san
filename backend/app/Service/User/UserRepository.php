@@ -27,4 +27,9 @@ class UserRepository
 
         return $user;
     }
+
+    public function destroy(int $id)
+    {
+        User::find($id)->delete();
+    }
 }

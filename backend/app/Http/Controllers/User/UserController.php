@@ -47,8 +47,9 @@ class UserController extends Controller
         return response()->json(new UpdateResource($user));
     }
 
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
-        //
+        $this->service->destroy($id);
+        return \response()->json([], Response::HTTP_NO_CONTENT);
     }
 }

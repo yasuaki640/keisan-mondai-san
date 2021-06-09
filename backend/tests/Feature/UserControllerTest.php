@@ -191,4 +191,15 @@ class UserControllerTest extends TestCase
             'email' => 'yasu@gmail.com',
         ]);
     }
+
+    public function test_destroy_success()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->deleteJson('api/users/' . $user->getKey());
+
+        $response->assertNoContent();
+        $this->assertSoftDeleted('users', ['id' => $user->getKey()]);
+    }
 }
