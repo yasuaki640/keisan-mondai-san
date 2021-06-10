@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\EditRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Resources\User\StoreResource;
 use App\Http\Resources\User\UpdateResource;
@@ -41,7 +41,7 @@ class UserController extends Controller
         return response()->json(new IndexResource($user));
     }
 
-    public function update(EditRequest $request, int $id): JsonResponse
+    public function update(UpdateRequest $request, int $id): JsonResponse
     {
         $this->authorize('update',$id);
         $user = $this->service->update($id, $request->all());
