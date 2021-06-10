@@ -161,6 +161,23 @@ class UserControllerTest extends TestCase
         ]);
     }
 
+    public function test_update_fail_policy_not_login_user()
+    {
+        $users = User::factory()->count(2)->create();
+
+        $response = $this->actingAs($users[0])
+            ->putJson('api/users/' . $users[1]->getKey(), [
+                'name' => 'yasu',
+                'd_o_b' => '1994-09-07',
+                'sex' => '1',
+                'email' => 'yasu@gmail.com',
+                'password' => '12345678',
+                'password_confirmation' => '12345678'
+            ]);
+
+        $response->assertForbidden();
+    }
+
     public function test_update_success()
     {
         $user = User::factory()->create();

@@ -41,8 +41,9 @@ class UserController extends Controller
         return response()->json(new IndexResource($user));
     }
 
-    public function update(EditRequest $request, int $id)
+    public function update(EditRequest $request, int $id): JsonResponse
     {
+        $this->authorize('update',$id);
         $user = $this->service->update($id, $request->all());
         return response()->json(new UpdateResource($user));
     }
