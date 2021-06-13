@@ -209,6 +209,16 @@ class UserControllerTest extends TestCase
         ]);
     }
 
+    public function test_destroy_fail_not_logged_in_user()
+    {
+        $users = User::factory()->count(2)->create();
+
+        $response = $this->actingAs($users[0])
+            ->deleteJson('api/users/' . $users[1]->getKey());
+
+        $response->assertUnauthorized();
+    }
+
     public function test_destroy_success()
     {
         $user = User::factory()->create();
