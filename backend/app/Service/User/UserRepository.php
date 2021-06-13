@@ -10,9 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserRepository
 {
-    public function create(array $paramas): int
+    public function create(array $params): int
     {
-        return User::create($paramas)->id;
+        $params['password'] = \Hash::make($params['password']);
+
+        return User::create($params)->id;
     }
 
     public function findAll(): Collection|array

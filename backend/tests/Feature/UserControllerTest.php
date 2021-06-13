@@ -175,7 +175,7 @@ class UserControllerTest extends TestCase
                 'password_confirmation' => '12345678'
             ]);
 
-        $response->assertForbidden();
+        $response->assertUnauthorized();
     }
 
     public function test_update_success()
