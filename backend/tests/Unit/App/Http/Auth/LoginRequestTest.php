@@ -14,7 +14,7 @@ class LoginRequestTest extends TestCase
      * @param array
      * @param array
      * @param boolean
-     * @dataProvider dataUserRegistration
+     * @dataProvider dataProvider
      */
     public function test_LoginRequest_validation(array $keys, array $values, bool $expect)
     {
@@ -27,7 +27,7 @@ class LoginRequestTest extends TestCase
         $this->assertEquals($expect, $validator->passes());
     }
 
-    public function dataUserRegistration()
+    public function dataProvider()
     {
         return [
             'no name' => [
