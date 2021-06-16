@@ -18,7 +18,7 @@ class UserControllerTest extends TestCase
             'sex' => 0,
             'email' => 'y@g.com',
             'password' => 'password',
-            'password_confirmation'
+            'password_confirmation' => 'password',
         ]);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
