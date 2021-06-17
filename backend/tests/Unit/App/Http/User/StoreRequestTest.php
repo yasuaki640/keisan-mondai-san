@@ -4,7 +4,7 @@ namespace Tests\Unit\App\Http\User;
 
 use App\Http\Requests\User\StoreRequest;
 use Illuminate\Support\Facades\Validator;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class StoreRequestTest extends TestCase
 {
@@ -44,7 +44,45 @@ class StoreRequestTest extends TestCase
                     'password'
                 ],
                 false
-            ]
+            ],
+            'fail illegal_d_o_b' => [
+                [
+                    'name',
+                    'd_o_b',
+                    'sex',
+                    'email',
+                    'password',
+                    'password_confirmation'
+                ],
+                [
+                    'yasu',
+                    '123123',
+                    0,
+                    'y@g.com',
+                    'password',
+                    'password'
+                ],
+                false
+            ],
+            'fail empty email' => [
+                [
+                    'name',
+                    'd_o_b',
+                    'sex',
+                    'email',
+                    'password',
+                    'password_confirmation'
+                ],
+                [
+                    'yasu',
+                    '123123',
+                    0,
+                    '',
+                    'password',
+                    'password'
+                ],
+                false
+            ],
         ];
     }
 }
