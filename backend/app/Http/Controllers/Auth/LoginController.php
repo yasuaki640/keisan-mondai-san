@@ -8,7 +8,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
     /**
      * Get a JWT via given credentials.
