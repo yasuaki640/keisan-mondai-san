@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
@@ -17,5 +15,22 @@ class LoginControllerTest extends TestCase
         ]);
 
         $response->assertUnauthorized();
+    }
+
+    public function test_login_success()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->postJson('api/login', [
+            'name' => $user->name,
+            'password' => 'password'
+        ]);
+
+        $response->assertOk();
+        $response->assertJsonStructure([
+            'access_token',
+            'token_type',
+            'expires_in'
+        ]);
     }
 }
