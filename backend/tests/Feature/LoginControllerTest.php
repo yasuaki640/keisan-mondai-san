@@ -25,9 +25,7 @@ class LoginControllerTest extends TestCase
             'name' => $user->name,
             'password' => 'password'
         ]);
-
-        dd($response);
-
+        
         $response->assertOk();
         $response->assertJsonStructure([
             'access_token',
