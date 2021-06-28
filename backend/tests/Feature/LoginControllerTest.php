@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_login_fail_invalid_credentials()
     {
         $response = $this->postJson('api/login', [
@@ -25,7 +28,7 @@ class LoginControllerTest extends TestCase
             'name' => $user->name,
             'password' => 'password'
         ]);
-        
+
         $response->assertOk();
         $response->assertJsonStructure([
             'access_token',

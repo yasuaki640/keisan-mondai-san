@@ -3,8 +3,6 @@
 namespace Tests\Unit\App\Http\Auth;
 
 use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Validator;
 use Tests\TestCase;
 
