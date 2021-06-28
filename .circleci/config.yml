@@ -60,7 +60,7 @@ jobs:
       - run:
           name: create jwt secret
           working_directory: ./backend
-          command: php artisan jwt:secret --env==testing --force
+          command: php artisan jwt:secret --env==testing --database=mysql_test --force
       - run:
           name: run migration
           working_directory: ./backend
