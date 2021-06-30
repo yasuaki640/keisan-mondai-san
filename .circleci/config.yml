@@ -58,13 +58,13 @@ jobs:
           working_directory: ./backend
           command: cp .env.example .env
       - run:
-          name: create jwt secret
-          working_directory: ./backend
-          command: php artisan jwt:secret --env==testing --force
-      - run:
           name: publish jwt config
           working_directory: ./backend
           command: php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider" --env==testing --force
+      - run:
+          name: create jwt secret
+          working_directory: ./backend
+          command: php artisan jwt:secret --env==testing --force
       - run:
           name: run migration
           working_directory: ./backend
@@ -72,7 +72,7 @@ jobs:
       - run:
           name: run phpunit tests
           working_directory: ./backend
-          command: vendor/bin/phpunit
+          command: php artisan test
 
       - run:
           name: check if can reset migrate
