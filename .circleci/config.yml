@@ -72,7 +72,7 @@ jobs:
       - run:
           name: run phpunit tests
           working_directory: ./backend
-          command: php artisan test
+          command: php artisan test --env==testing --force
 
       - run:
           name: check if can reset migrate
