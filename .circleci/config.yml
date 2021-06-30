@@ -60,7 +60,7 @@ jobs:
       - run:
           name: publish jwt config
           working_directory: ./backend
-          command: php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider"
+          command: php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider" --env==testing --force
       - run:
           name: create jwt secret
           working_directory: ./backend
@@ -72,7 +72,7 @@ jobs:
       - run:
           name: run phpunit tests
           working_directory: ./backend
-          command: php artisan test --env==testing
+          command: php artisan test --env==testing --force
 
       - run:
           name: check if can reset migrate
