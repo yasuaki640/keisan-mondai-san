@@ -1,7 +1,6 @@
 const state = () => ({
   user: null,
   token: null,
-  apiStatus: null,
 })
 
 const getters = {
@@ -16,9 +15,6 @@ const mutations = {
   setToken(state, token) {
     state.token = token
   },
-  setApiStatus(state, status) {
-    state.apiStatus = status
-  },
 }
 
 const actions = {
@@ -28,7 +24,6 @@ const actions = {
     if (response.status >= 200 && response.status <= 299) {
       alert('Success')
     } else {
-      context.commit('setApiStatus', false)
       context.commit('error/setCode', response.status, { root: true })
     }
   },
@@ -44,7 +39,6 @@ const actions = {
   async login(context, data) {
     const response = await this.$axios.post('/api/login', data)
     if (!(response.status >= 200 && response.status <= 299)) {
-      context.commit('setApiStatus', false)
       context.commit('error/setCode', response.status, { root: true })
       return response
     }
@@ -54,7 +48,6 @@ const actions = {
 
     const userResponse = await this.$axios.get('/api/users/me')
     context.commit('setUser', userResponse.data)
-    context.commit('setApiStatus', true)
 
     return response
   },
