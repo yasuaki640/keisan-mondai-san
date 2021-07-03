@@ -104,7 +104,7 @@ export default {
       })
       alert('ユーザーが作成されました。')
 
-      this.$router.go()
+      await this.$router.push('/')
     },
     resetForm() {
       this.email = ''
