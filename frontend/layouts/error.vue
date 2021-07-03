@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 v-if="error.statusCode === 404">ページが存在しません。</h1>
-    <h1 v-if="error.statusCode === 401 || error.statusCode === 403">
+    <h1 v-else-if="error.statusCode === 401 || error.statusCode === 403">
       ログインし直してください。
     </h1>
     <h1 v-else>
