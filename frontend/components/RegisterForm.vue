@@ -3,6 +3,13 @@
     <!-- the "handleSubmit" function on the slot-scope executes the callback if validation was successfull -->
     <section class="section">
       <BInputWithValidation
+        v-model="item.name"
+        rules="required|max:255"
+        type="text"
+        label="ユーザーID"
+      />
+
+      <BInputWithValidation
         v-model="item.email"
         rules="email|required"
         type="email"
@@ -40,8 +47,8 @@
         type="radio"
         label="性別"
       >
-        <b-radio v-model="item.sex" native-value="male">男</b-radio>
-        <b-radio v-model="item.sex" native-value="female">女</b-radio>
+        <b-radio v-model="item.sex" native-value="0">男</b-radio>
+        <b-radio v-model="item.sex" native-value="1">女</b-radio>
       </BRadioWithValidation>
 
       <div class="buttons">
@@ -76,6 +83,7 @@ export default {
   data() {
     return {
       item: {
+        name: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -85,8 +93,18 @@ export default {
     }
   },
   methods: {
-    submit() {
-      alert(JSON.stringify(this.item))
+    async submit() {
+      await this.$axios.$post('/users', {
+        name: this.item.name,
+        email: this.item.email,
+        password: this.item.password,
+        password_confirmation: this.item.password_confirmation,
+        sex: this.item.sex,
+        d_o_b: this.item.d_o_b,
+      })
+      alert('ユーザーが作成されました。')
+
+      this.$router.go()
     },
     resetForm() {
       this.email = ''
