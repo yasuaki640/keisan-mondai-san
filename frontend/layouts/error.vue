@@ -7,7 +7,7 @@
     <h1 v-else>
       予期せぬエラーが発生しました。大変申し訳ありませんがもう一度操作をお試しください。
     </h1>
-    <a @click="goBack">戻る</a>
+    <a @click="redirect">戻る</a>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    goBack() {
+    redirect() {
       return this.$route.name === 'index'
         ? this.$router.go()
         : this.$router.push('/')
