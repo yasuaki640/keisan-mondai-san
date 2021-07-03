@@ -64,7 +64,7 @@ jobs:
       - run:
           name: create jwt secret
           working_directory: ./backend
-          command: php artisan jwt:secret --env==testing --force
+          command: php artisan jwt:secret
       - run:
           name: run migration
           working_directory: ./backend
@@ -72,12 +72,12 @@ jobs:
       - run:
           name: run phpunit tests
           working_directory: ./backend
-          command: php artisan test
+          command: php artisan test --env==testing
 
       - run:
           name: check if can reset migrate
           working_directory: ./backend
-          command: php artisan migrate:rollback --env=testing --force
+          command: php artisan migrate:rollback --env=testing --database=mysql_test --force
 
       - slack/notify:
           channel: "circle-ci"
