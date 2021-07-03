@@ -72,12 +72,12 @@ jobs:
       - run:
           name: run phpunit tests
           working_directory: ./backend
-          command: php artisan test --env==testing
+          command: php artisan test
 
       - run:
           name: check if can reset migrate
           working_directory: ./backend
-          command: php artisan migrate:rollback --env=testing --database=mysql_test --force
+          command: php artisan migrate:rollback --env=testing --force
 
       - slack/notify:
           channel: "circle-ci"
