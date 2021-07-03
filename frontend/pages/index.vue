@@ -17,16 +17,5 @@ export default {
   comments: {
     RegisterForm,
   },
-  data() {
-    return {
-      item: {
-        name: '',
-        email: '',
-        password: '',
-      },
-    }
-  },
-
-  methods: {},
 }
 </script>
