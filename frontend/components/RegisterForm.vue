@@ -11,7 +11,7 @@
 
       <BInputWithValidation
         v-model="item.email"
-        rules="email|required"
+        rules="email"
         type="email"
         label="メール"
       />
