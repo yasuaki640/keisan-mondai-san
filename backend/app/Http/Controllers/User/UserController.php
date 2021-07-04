@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Http\Resources\User\IndexResource;
+use App\Http\Resources\User\ShowResource;
 use App\Http\Resources\User\StoreResource;
 use App\Http\Resources\User\UpdateResource;
 use App\Models\User;
@@ -29,6 +30,11 @@ class UserController extends Controller
     {
         $users = $this->service->index();
         return response()->json(IndexResource::collection($users));
+    }
+
+    public function me(): JsonResponse
+    {
+        return response()->json(new ShowResource(auth()->user()));
     }
 
     public function store(StoreRequest $request): JsonResponse
