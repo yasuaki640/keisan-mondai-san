@@ -102,6 +102,7 @@ export default {
         sex: this.item.sex,
         d_o_b: this.item.d_o_b,
       })
+
       this.$services.message.showSuccessMessage('登録しました。')
       await this.$router.push('/login')
     },
