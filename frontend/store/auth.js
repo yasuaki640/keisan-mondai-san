@@ -19,16 +19,10 @@ const mutations = {
 
 const actions = {
   async register(context, data) {
-    const response = await this.$this.$axios.post('/api/users', data)
-
-    if (response.status >= 200 && response.status <= 299) {
-      alert('Success')
-    } else {
-      context.commit('error/setCode', response.status, { root: true })
-    }
+    await this.$this.$axios.post('/users', data)
   },
   async edit(context, data) {
-    const response = await this.$axios.put('/api/users/me', data)
+    const response = await this.$axios.put('/users/me', data)
     if (!(response.status >= 200 && response.status <= 299)) {
       return response
     }
@@ -37,28 +31,19 @@ const actions = {
     return response
   },
   async login(context, data) {
-    const response = await this.$axios.post('/api/login', data)
-    if (!(response.status >= 200 && response.status <= 299)) {
-      context.commit('error/setCode', response.status, { root: true })
-      return response
-    }
+    const response = await this.$axios.post('/login', data)
 
     context.commit('setToken', response.data.access_token)
     localStorage.setItem('post_app_token', response.data.access_token)
 
-    const userResponse = await this.$axios.get('/api/users/me')
+    const userResponse = await this.$axios.get('/users/me')
     context.commit('setUser', userResponse.data)
 
     return response
   },
   async loginUser(context) {
-    const response = await this.$axios.get('/api/users/me')
-
-    if (response.status >= 200 && response.status <= 299) {
-      context.commit('setUser', response.data)
-    } else {
-      context.commit('setUser', null)
-    }
+    const response = await this.$axios.get('/users/me')
+    context.commit('setUser', response.data)
   },
   logout(context) {
     context.commit('setToken', null)

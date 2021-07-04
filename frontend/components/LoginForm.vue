@@ -18,7 +18,7 @@
       />
 
       <div class="buttons">
-        <button class="button is-success" @click="handleSubmit(submit)">
+        <button class="button is-success" @click="handleSubmit(login)">
           <span class="icon is-small">
             <i class="fas fa-check"></i>
           </span>
@@ -53,14 +53,12 @@ export default {
     }
   },
   methods: {
-    async submit() {
-      await this.$axios.$post('/login', {
-        name: this.item.name,
-        password: this.item.password,
-      })
-      alert('ログインに成功しました。')
+    async login() {
+      const response = await this.$store.dispatch('auth/login', this.item)
 
-      await this.$router.push('/')
+      alert(JSON.stringify(response))
+
+      this.$services.message.showSuccessMessage('ログインしました。')
     },
     resetForm() {
       this.name = ''
