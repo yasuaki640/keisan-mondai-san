@@ -102,9 +102,8 @@ export default {
         sex: this.item.sex,
         d_o_b: this.item.d_o_b,
       })
-      alert('ユーザーが作成されました。')
-
-      await this.$router.push('/')
+      this.$services.message.showSuccessMessage('登録しました。')
+      await this.$router.push('/login')
     },
     resetForm() {
       this.email = ''
