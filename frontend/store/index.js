@@ -23,9 +23,7 @@ const actions = {
   },
   async edit(context, data) {
     const response = await this.$axios.put('/users/me', data)
-    if (!(response.status >= 200 && response.status <= 299)) {
-      return response
-    }
+    if (!(response.status >= 200 && response.status <= 299)) return response
 
     context.commit('setUser', data)
     return response
@@ -34,7 +32,7 @@ const actions = {
     const response = await this.$axios.post('/login', data)
 
     context.commit('setToken', response.data.access_token)
-    localStorage.setItem('post_app_token', response.data.access_token)
+    localStorage.setItem('keisan_mondai_san_token', response.data.access_token)
 
     const userResponse = await this.$axios.get('/users/me')
     context.commit('setUser', userResponse.data)

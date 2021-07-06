@@ -44,6 +44,33 @@ export default {
     baseURL: 'http://localhost:80/api',
   },
 
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: false,
+      home: '/',
+    },
+    strategies: {
+      laravelJWT: {
+        provider: 'laravel/jwt',
+        url: '<laravel url>',
+        endpoints: {
+          login: { url: '/auth/sign_in', method: 'post', propertyName: false },
+          logout: false,
+          user: false,
+        },
+        token: {
+          property: 'access_token',
+          maxAge: 60 * 60,
+        },
+        refreshToken: {
+          maxAge: 20160 * 60,
+        },
+      },
+    },
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['vee-validate/dist/rules'],
