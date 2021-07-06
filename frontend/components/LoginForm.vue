@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     async login() {
-      const response = await this.$store.dispatch('auth/login', this.item)
+      const response = await this.$store.dispatch('login', this.item)
 
       alert(JSON.stringify(response))
 
