@@ -43,22 +43,21 @@ export default {
   axios: {
     baseURL: 'http://localhost:80/api',
   },
-
   auth: {
     redirect: {
       login: '/login',
-      logout: '/login',
+      logout: '/',
       callback: false,
       home: '/',
     },
     strategies: {
       laravelJWT: {
         provider: 'laravel/jwt',
-        url: '<laravel url>',
+        url: 'http://localhost:80/api',
         endpoints: {
-          login: { url: '/auth/sign_in', method: 'post', propertyName: false },
+          login: { url: '/login', method: 'post', propertyName: false },
           logout: false,
-          user: false,
+          user: { url: '/users/me', method: 'post', propertyName: false },
         },
         token: {
           property: 'access_token',

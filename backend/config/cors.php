@@ -20,6 +20,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
+        'http://localhost',
         'http://localhost:3000' // for local nuxt
     ],
 

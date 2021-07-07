@@ -54,9 +54,12 @@ export default {
   },
   methods: {
     async login() {
-      const response = await this.$store.dispatch('login', this.item)
-
-      alert(JSON.stringify(response))
+      await this.$auth.loginWith('laravelJWT', {
+        data: {
+          name: this.item.name,
+          password: this.item.password,
+        },
+      })
 
       this.$services.message.showSuccessMessage('ログインしました。')
     },
