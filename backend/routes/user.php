@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ Route::middleware('auth:api')->group(function () {
         Route::get('me', [UserController::class, 'me']);
         Route::put('{user}', [UserController::class, 'update']);
         Route::delete('{user}', [UserController::class, 'destroy']);
+    });
+
+    Route::prefix('questions')->group(function () {
+        Route::get('', [QuestionController::class, 'show']);
     });
 });
 
