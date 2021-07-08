@@ -144,6 +144,20 @@ class UserControllerTest extends TestCase
         ]);
     }
 
+    public function test_me_success()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->getJson('api/users/me');
+
+        $response->assertOk();
+        $response->assertJson([
+            'id' => $user->id,
+            'name' => $user->name
+        ]);
+    }
+
     public function test_update_fail_validation_password_length_under_7()
     {
         $user = User::factory()->create();
