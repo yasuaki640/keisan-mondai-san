@@ -37,4 +37,40 @@ class LoginControllerTest extends TestCase
             'expires_in'
         ]);
     }
+
+    public function test_scenario_login_success_and_get_login_user_info_from_UserController_me()
+    {
+        dd(config('app.env'));
+        $user = User::factory()->create();
+
+        $token = $this->login($user);
+
+        $this->getLoginUserInfo($token);
+    }
+
+    private function login(User $user): string
+    {
+        $response = $this->postJson('api/login', [
+            'name' => $user->name,
+            'password' => 'password'
+        ]);
+
+        $response->assertOk();
+        $response->assertJsonStructure([
+            'access_token',
+            'token_type',
+            'expires_in'
+        ]);
+
+        return $response->json('access_token');
+    }
+
+    private function getLoginUserInfo(string $token): void
+    {
+        $response = $this->getJson('api/users/me', [
+            'Authorization' => 'Bearer ' . $token
+        ]);
+
+        $response->assertOk();
+    }
 }
