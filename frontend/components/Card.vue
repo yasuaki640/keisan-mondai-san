@@ -1,6 +1,6 @@
 <template>
   <div class="column">
-    <div class="card">
+    <div class="card" @click="$router.push(link)">
       <header class="card-header">
         <p class="card-header-title has-text-grey">
           {{ title }}
@@ -30,6 +30,10 @@ export default {
       required: true,
     },
     icon: {
+      type: String,
+      required: true,
+    },
+    link: {
       type: String,
       required: true,
     },
