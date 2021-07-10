@@ -37,9 +37,10 @@
 
 <script>
 import BInputWithValidation from './inputs/BInputWithValidation'
+import { HTTP_STATUS_UNAUTHORIZED } from '~/constants/http'
 
 export default {
-  name: 'BuefyForm',
+  name: 'LoginForm',
   components: {
     BInputWithValidation,
   },
@@ -65,7 +66,7 @@ export default {
           this.$router.push('/')
         })
         .catch((e) => {
-          if (e.response.status === 401) {
+          if (e.response.status === HTTP_STATUS_UNAUTHORIZED) {
             this.$services.message.showErrorMessage(
               'ユーザーIDまたはパスワードが間違っています。'
             )
