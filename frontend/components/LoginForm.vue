@@ -1,6 +1,5 @@
 <template>
   <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
-    <!-- the "handleSubmit" function on the slot-scope executes the callback if validation was successfull -->
     <section class="section">
       <BInputWithValidation
         v-model="item.name"
