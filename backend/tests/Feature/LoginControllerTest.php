@@ -40,7 +40,6 @@ class LoginControllerTest extends TestCase
 
     public function test_scenario_login_success_and_get_login_user_info_from_UserController_me()
     {
-        dd(config('app.env'));
         $user = User::factory()->create();
 
         $token = $this->login($user);
