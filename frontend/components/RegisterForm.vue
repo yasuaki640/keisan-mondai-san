@@ -93,17 +93,24 @@ export default {
   },
   methods: {
     async submit() {
-      await this.$axios.$post('/users', {
-        name: this.item.name,
-        email: this.item.email,
-        password: this.item.password,
-        password_confirmation: this.item.password_confirmation,
-        sex: this.item.sex,
-        d_o_b: this.item.d_o_b,
-      })
-
-      this.$services.message.showSuccessMessage('登録しました。')
-      await this.$router.push('/login')
+      await this.$axios
+        .$post('/users', {
+          name: this.item.name,
+          email: this.item.email,
+          password: this.item.password,
+          password_confirmation: this.item.password_confirmation,
+          sex: this.item.sex,
+          d_o_b: this.item.d_o_b,
+        })
+        .then(() => {
+          this.$services.message.showSuccessMessage('登録しました。')
+          this.$router.push('/login')
+        })
+        .catch(() => {
+          this.$services.message.showErrorMessage(
+            'システムエラーが発生しました。お手数ですがもう一度操作をお試しください。'
+          )
+        })
     },
     resetForm() {
       this.email = ''
