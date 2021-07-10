@@ -54,14 +54,24 @@ export default {
   },
   methods: {
     async login() {
-      await this.$auth.loginWith('laravelJWT', {
-        data: {
-          name: this.item.name,
-          password: this.item.password,
-        },
-      })
-
-      this.$services.message.showSuccessMessage('ログインしました。')
+      await this.$auth
+        .loginWith('laravelJWT', {
+          data: {
+            name: this.item.name,
+            password: this.item.password,
+          },
+        })
+        .then(() => {
+          this.$services.message.showSuccessMessage('ログインしました。')
+          this.$router.push('/')
+        })
+        .catch((e) => {
+          if (e.response.status === 401) {
+            this.$services.message.showErrorMessage(
+              'ユーザーIDまたはパスワードが間違っています。'
+            )
+          }
+        })
     },
     resetForm() {
       this.name = ''
