@@ -22,12 +22,14 @@
       <aside class="column is-2 section">
         <p class="menu-label is-hidden-touch">General</p>
         <ul class="menu-list">
-          <li v-for="(item, key) of items" :key="key">
-            <nuxt-link :to="item.to" exact-active-class="is-active">
-              <b-icon :icon="item.icon" />
-              {{ item.title }}
-            </nuxt-link>
-          </li>
+          <template v-for="(item, key) of items">
+            <li v-if="isDisplayed(item.requireLogin)" :key="key">
+              <nuxt-link :to="item.to" exact-active-class="is-active">
+                <b-icon :icon="item.icon" />
+                {{ item.title }}
+              </nuxt-link>
+            </li>
+          </template>
         </ul>
       </aside>
 
@@ -44,17 +46,32 @@ export default {
     return {
       items: [
         {
-          title: 'Home',
+          title: 'トップページ',
           icon: 'home',
           to: { name: 'index' },
+          requireLogin: false,
+        },
+        {
+          title: 'ユーザーメイン画面',
+          icon: 'account',
+          to: { name: 'home' },
+          requireLogin: true,
         },
         {
           title: '計算問題',
           icon: 'lightbulb',
-          to: 'question/select-questions',
+          to: { name: 'question-select' },
+          requireLogin: true,
         },
       ],
     }
+  },
+  computed: {
+    isDisplayed() {
+      return function (requireLogin) {
+        return !requireLogin || this.$auth.loggedIn
+      }
+    },
   },
 }
 </script>
