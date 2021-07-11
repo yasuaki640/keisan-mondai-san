@@ -16,6 +16,7 @@ class CreateQuestionSummariesTable extends Migration
         Schema::create('question_summaries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->tinyInteger('num_of_questions');
             $table->timestamp('answer_start_at');
             $table->timestamp('answer_end_at')->nullable();
             $table->timestamps();
