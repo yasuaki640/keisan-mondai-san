@@ -1,10 +1,12 @@
 <template>
   <section>
     <h1 class="title">ユーザーホーム画面</h1>
-    <template v-for="(item, key) of items">
-      <Card :key="key" :title="item.title" :icon="item.icon" :to="item.to">
-      </Card>
-    </template>
+    <div class="columns is-desktop">
+      <div v-for="(item, key) of items" :key="key" class="column">
+        <Card :key="key" :title="item.title" :icon="item.icon" :to="item.to">
+        </Card>
+      </div>
+    </div>
   </section>
 </template>
 
