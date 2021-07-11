@@ -15,12 +15,8 @@ class CreateQuestionResults extends Migration
     {
         Schema::create('question_results', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('question_id')->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('question_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->enum('result', ['correct', 'wrong', 'non-response']);
             $table->timestamps();
             $table->softDeletes();
