@@ -23,7 +23,7 @@
         <p class="menu-label is-hidden-touch">General</p>
         <ul class="menu-list">
           <template v-for="(item, key) of items">
-            <li v-if="isDisplayed(item.requireLogin)" :key="key">
+            <li v-if="canDisplay(item.requireLogin)" :key="key">
               <nuxt-link :to="item.to" exact-active-class="is-active">
                 <b-icon :icon="item.icon" />
                 {{ item.title }}
@@ -67,7 +67,7 @@ export default {
     }
   },
   computed: {
-    isDisplayed() {
+    canDisplay() {
       return function (requireLogin) {
         return !requireLogin || this.$auth.loggedIn
       }
