@@ -63,7 +63,7 @@ export default {
         })
         .then(() => {
           this.$services.message.showSuccessMessage('ログインしました。')
-          this.$router.push('/')
+          this.$router.push('/home')
         })
         .catch((e) => {
           if (e.response.status === HTTP_STATUS_UNAUTHORIZED) {
