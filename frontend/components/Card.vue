@@ -1,23 +1,25 @@
 <template>
   <div class="column">
-    <div class="card" @click="$router.push(link)">
-      <header class="card-header">
-        <p class="card-header-title has-text-grey">
-          {{ title }}
-        </p>
-      </header>
-      <div class="card-content">
-        <div class="content has-text-centered">
-          <b-icon :icon="icon" size="is-large" type="is-primary" />
+    <div class="card">
+      <nuxt-link :to="to">
+        <header class="card-header">
+          <p class="card-header-title has-text-grey">
+            {{ title }}
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content has-text-centered">
+            <b-icon :icon="icon" size="is-large" type="is-primary" />
+          </div>
         </div>
-      </div>
-      <footer class="card-footer">
-        <div class="card-footer-item">
-          <span>
-            <slot />
-          </span>
-        </div>
-      </footer>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <span>
+              <slot />
+            </span>
+          </div>
+        </footer>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -33,8 +35,8 @@ export default {
       type: String,
       required: true,
     },
-    link: {
-      type: String,
+    to: {
+      type: Object,
       required: true,
     },
   },
