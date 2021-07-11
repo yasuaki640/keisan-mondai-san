@@ -17,7 +17,7 @@ export default {
         {
           title: '問題を解く',
           icon: 'cellphone-link',
-          to: { name: 'question-select' },
+          to: { name: 'question-solve' },
         },
         {
           title: '成績確認',
