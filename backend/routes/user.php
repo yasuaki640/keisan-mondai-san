@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Question\QuestionController;
+use App\Http\Controllers\QuestionSummaryController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,10 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('questions')->group(function () {
         Route::get('', [QuestionController::class, 'show']);
+    });
+
+    Route::prefix('question-summaries')->name('question-summaries.')->group(function () {
+        Route::post('', [QuestionSummaryController::class, 'store'])->name('store');
     });
 });
 
