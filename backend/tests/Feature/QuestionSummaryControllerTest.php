@@ -21,5 +21,9 @@ class QuestionSummaryControllerTest extends TestCase
             ]);
 
         $response->assertCreated();
+        $this->assertDatabaseHas('question_summaries', [
+            'operator' => 'add',
+            'num_of_questions' => 10
+        ]);
     }
 }
