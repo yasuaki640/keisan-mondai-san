@@ -22,6 +22,7 @@ class QuestionSummaryControllerTest extends TestCase
 
         $response->assertCreated();
         $this->assertDatabaseHas('question_summaries', [
+            'user_id' => $user->id,
             'operator' => 'add',
             'num_of_questions' => 10
         ]);

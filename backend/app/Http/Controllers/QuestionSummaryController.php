@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuestionSummary\StoreRequest;
 use App\Service\QuestionSummary\QuestionSummaryService;
 use App\Service\QuestionSummary\QuestionSummaryServiceImpl;
 use Illuminate\Http\JsonResponse;
@@ -16,9 +17,12 @@ class QuestionSummaryController extends Controller
         $this->service = $service;
     }
 
-    public function store(): JsonResponse
+    public function store(StoreRequest $request): JsonResponse
     {
+        $req = array_merge($request->validated());
 
-        return response()->json([], Response::HTTP_CREATED);
+        $id = $this->service->store($req);
+
+        return response()->json(['id' => $id], Response::HTTP_CREATED);
     }
 }

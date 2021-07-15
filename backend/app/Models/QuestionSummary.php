@@ -12,6 +12,8 @@ class QuestionSummary extends Model
 
     protected $fillable = [
         'user_id',
+        'num_of_questions',
+        'operator',
         'answer_start_at',
         'answer_end_at',
     ];
