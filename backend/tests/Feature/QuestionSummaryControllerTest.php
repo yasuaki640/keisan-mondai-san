@@ -10,7 +10,7 @@ class QuestionSummaryControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_store()
+    public function test_store_success()
     {
         $user = User::factory()->create();
 
