@@ -27,4 +27,14 @@ class QuestionSummaryControllerTest extends TestCase
             'num_of_questions' => 10
         ]);
     }
+
+    public function test_show_fail_not_existing_id()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->getJson('api/question-summaries/9999999');
+
+        $response->assertNotFound();
+    }
 }
