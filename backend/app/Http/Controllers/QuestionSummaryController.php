@@ -19,9 +19,7 @@ class QuestionSummaryController extends Controller
 
     public function store(StoreRequest $request): JsonResponse
     {
-        $req = array_merge($request->validated());
-
-        $id = $this->service->store($req);
+        $id = $this->service->store(array_merge($request->validated()));
 
         return response()->json(['id' => $id], Response::HTTP_CREATED);
     }
