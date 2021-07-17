@@ -14,7 +14,7 @@ class AddOperatorsColumnToQuestionSummariesTable extends Migration
     public function up()
     {
         Schema::table('question_summaries', function (Blueprint $table) {
-            $table->string('operator');
+            $table->string('operator')->after('num_of_questions');
         });
     }
 
