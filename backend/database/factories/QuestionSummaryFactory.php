@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\QuestionSummary;
-use App\Models\QuestonSummary;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
