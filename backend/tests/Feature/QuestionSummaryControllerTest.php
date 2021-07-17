@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\QuestionSummary;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -28,13 +29,30 @@ class QuestionSummaryControllerTest extends TestCase
         ]);
     }
 
-    public function test_show_fail_not_existing_id()
+    public function test_show_success()
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)
-            ->getJson('api/question-summaries/9999999');
+        $questionSummary = QuestionSummary::factory()->create();
 
-        $response->assertNotFound();
+        $response = $this->actingAs($user)
+            ->getJson('api/question-summaries/' . $questionSummary->id);
+
+        $response->assertJsonStructure([
+            'id',
+            'user_id',
+            'num_of_questions',
+            'operator',
+            'answer_start_at',
+            'answer_end_at',
+            'created_at',
+            'updated_at',
+        ]);
+        $response->assertJson([
+            'id' => $questionSummary->id,
+            'user_id' => $questionSummary->user_id,
+            'num_of_questions' => $questionSummary->num_of_questions,
+            'operator' => $questionSummary->operator,
+        ]);
     }
 }

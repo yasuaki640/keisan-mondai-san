@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\QuestionSummary\StoreRequest;
+use App\Http\Resources\QuestionSummary\ShowResource;
 use App\Models\QuestionSummary;
 use App\Service\QuestionSummary\QuestionSummaryService;
 use App\Service\QuestionSummary\QuestionSummaryServiceImpl;
@@ -27,6 +28,6 @@ class QuestionSummaryController extends Controller
 
     public function show(QuestionSummary $questionSummary)
     {
-        return \response()->json();
+        return response()->json(new ShowResource($questionSummary));
     }
 }
