@@ -67,23 +67,25 @@ class QuestionSummaryControllerTest extends TestCase
         $response = $this->actingAs($user)
             ->getJson('api/question-summaries');
 
+        $questionSummaries = $user->question_summaries;
+
         $response->assertOk();
         $response->assertJson([
             [
-                'id' => $user->question_summaries[0]->id,
-                'user_id' => $user->question_summaries[0]->user_id,
-                'num_of_questions' => $user->question_summaries[0]->num_of_questions,
-                'operator' => $user->question_summaries[0]->operator,
+                'id' => $questionSummaries[0]->id,
+                'user_id' => $questionSummaries[0]->user_id,
+                'num_of_questions' => $questionSummaries[0]->num_of_questions,
+                'operator' => $questionSummaries[0]->operator,
             ], [
-                'id' => $user->question_summaries[1]->id,
-                'user_id' => $user->question_summaries[1]->user_id,
-                'num_of_questions' => $user->question_summaries[1]->num_of_questions,
-                'operator' => $user->question_summaries[1]->operator,
+                'id' => $questionSummaries[1]->id,
+                'user_id' => $questionSummaries[1]->user_id,
+                'num_of_questions' => $questionSummaries[1]->num_of_questions,
+                'operator' => $questionSummaries[1]->operator,
             ], [
-                'id' => $user->question_summaries[2]->id,
-                'user_id' => $user->question_summaries[2]->user_id,
-                'num_of_questions' => $user->question_summaries[2]->num_of_questions,
-                'operator' => $user->question_summaries[2]->operator,
+                'id' => $questionSummaries[2]->id,
+                'user_id' => $questionSummaries[2]->user_id,
+                'num_of_questions' => $questionSummaries[2]->num_of_questions,
+                'operator' => $questionSummaries[2]->operator,
             ]
         ]);
     }
