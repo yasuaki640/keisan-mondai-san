@@ -45,8 +45,15 @@ class QuestionSummaryController extends Controller
      * @param QuestionSummary $questionSummary
      * @return JsonResponse
      */
-    public function show(QuestionSummary $questionSummary)
+    public function show(QuestionSummary $questionSummary): JsonResponse
     {
         return response()->json(new ShowResource($questionSummary));
+    }
+
+    public function index(): JsonResponse
+    {
+        $questionSummaries = $this->service->index();
+
+        return response()->json(ShowResource::collection($questionSummaries));
     }
 }

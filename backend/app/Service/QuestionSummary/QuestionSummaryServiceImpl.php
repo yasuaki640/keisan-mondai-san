@@ -4,6 +4,8 @@
 namespace App\Service\QuestionSummary;
 
 
+use Illuminate\Database\Eloquent\Collection;
+
 class QuestionSummaryServiceImpl implements QuestionSummaryService
 {
     private QuestionSummaryRepository $repository;
@@ -21,5 +23,10 @@ class QuestionSummaryServiceImpl implements QuestionSummaryService
         ]);
 
         return $this->repository->store($params);
+    }
+
+    public function index(): Collection
+    {
+        return $this->repository->findAll();
     }
 }

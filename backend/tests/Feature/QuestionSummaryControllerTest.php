@@ -55,4 +55,36 @@ class QuestionSummaryControllerTest extends TestCase
             'operator' => $questionSummary->operator,
         ]);
     }
+
+    public function test_index_success()
+    {
+        $user = User::factory()->create();
+
+        $questionSummaries = QuestionSummary::factory()
+            ->count(3)
+            ->create();
+
+        $response = $this->actingAs($user)
+            ->getJson('api/question-summaries');
+
+        $response->assertOk();
+        $response->assertJson([
+            [
+                'id' => $questionSummaries[0]->id,
+                'user_id' => $questionSummaries[0]->user_id,
+                'num_of_questions' => $questionSummaries[0]->num_of_questions,
+                'operator' => $questionSummaries[0]->operator,
+            ], [
+                'id' => $questionSummaries[1]->id,
+                'user_id' => $questionSummaries[1]->user_id,
+                'num_of_questions' => $questionSummaries[1]->num_of_questions,
+                'operator' => $questionSummaries[1]->operator,
+            ], [
+                'id' => $questionSummaries[2]->id,
+                'user_id' => $questionSummaries[2]->user_id,
+                'num_of_questions' => $questionSummaries[2]->num_of_questions,
+                'operator' => $questionSummaries[2]->operator,
+            ]
+        ]);
+    }
 }

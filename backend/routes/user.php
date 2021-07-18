@@ -36,6 +36,7 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('question-summaries')->name('question-summaries.')->group(function () {
         Route::get('{questionSummary}', [QuestionSummaryController::class, 'show']);
         Route::post('', [QuestionSummaryController::class, 'store'])->name('store');
+        Route::get('', [QuestionSummaryController::class, 'index'])->name('index');
     });
 });
 
