@@ -31,11 +31,10 @@ class QuestionSummaryControllerTest extends TestCase
 
     public function test_show_success()
     {
-        $user = User::factory()
-            ->has(QuestionSummary::factory()->count(1), 'question_summaries')
-            ->create();
+        $user = User::factory()->create();
 
-        $questionSummary = $user->question_summaries;
+        $questionSummary = QuestionSummary::factory()
+            ->create(['user_id' => $user->id]);
 
         $response = $this->actingAs($user)
             ->getJson('api/question-summaries/' . $questionSummary->id);
