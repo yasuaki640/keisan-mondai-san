@@ -31,9 +31,11 @@ class QuestionSummaryControllerTest extends TestCase
 
     public function test_show_success()
     {
-        $user = User::factory()->create();
+        $user = User::factory()
+            ->has(QuestionSummary::factory()->count(1), 'question_summaries')
+            ->create();
 
-        $questionSummary = QuestionSummary::factory()->create();
+        $questionSummary = $user->question_summaries;
 
         $response = $this->actingAs($user)
             ->getJson('api/question-summaries/' . $questionSummary->id);
@@ -58,10 +60,8 @@ class QuestionSummaryControllerTest extends TestCase
 
     public function test_index_success()
     {
-        $user = User::factory()->create();
-
-        $questionSummaries = QuestionSummary::factory()
-            ->count(3)
+        $user = User::factory()
+            ->has(QuestionSummary::factory()->count(3), 'question_summaries')
             ->create();
 
         $response = $this->actingAs($user)
@@ -70,20 +70,20 @@ class QuestionSummaryControllerTest extends TestCase
         $response->assertOk();
         $response->assertJson([
             [
-                'id' => $questionSummaries[0]->id,
-                'user_id' => $questionSummaries[0]->user_id,
-                'num_of_questions' => $questionSummaries[0]->num_of_questions,
-                'operator' => $questionSummaries[0]->operator,
+                'id' => $user->question_summaries[0]->id,
+                'user_id' => $user->question_summaries[0]->user_id,
+                'num_of_questions' => $user->question_summaries[0]->num_of_questions,
+                'operator' => $user->question_summaries[0]->operator,
             ], [
-                'id' => $questionSummaries[1]->id,
-                'user_id' => $questionSummaries[1]->user_id,
-                'num_of_questions' => $questionSummaries[1]->num_of_questions,
-                'operator' => $questionSummaries[1]->operator,
+                'id' => $user->question_summaries[1]->id,
+                'user_id' => $user->question_summaries[1]->user_id,
+                'num_of_questions' => $user->question_summaries[1]->num_of_questions,
+                'operator' => $user->question_summaries[1]->operator,
             ], [
-                'id' => $questionSummaries[2]->id,
-                'user_id' => $questionSummaries[2]->user_id,
-                'num_of_questions' => $questionSummaries[2]->num_of_questions,
-                'operator' => $questionSummaries[2]->operator,
+                'id' => $user->question_summaries[2]->id,
+                'user_id' => $user->question_summaries[2]->user_id,
+                'num_of_questions' => $user->question_summaries[2]->num_of_questions,
+                'operator' => $user->question_summaries[2]->operator,
             ]
         ]);
     }

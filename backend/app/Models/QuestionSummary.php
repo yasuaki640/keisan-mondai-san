@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Scopes\UserIdScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class QuestionSummary extends Model
@@ -37,4 +39,9 @@ class QuestionSummary extends Model
         'answer_start_at',
         'answer_end_at',
     ];
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new UserIdScope());
+    }
 }

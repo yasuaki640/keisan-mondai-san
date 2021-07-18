@@ -17,10 +17,7 @@ class QuestionSummaryServiceImpl implements QuestionSummaryService
 
     public function store(array $params): int
     {
-        $params = array_merge($params, [
-            'user_id' => auth()->id(),
-            'answer_start_at' => now()
-        ]);
+        $params = array_merge($params, ['answer_start_at' => now()]);
 
         return $this->repository->store($params);
     }
