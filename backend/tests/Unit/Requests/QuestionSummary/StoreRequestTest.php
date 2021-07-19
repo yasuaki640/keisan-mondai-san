@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\App\Http\QuestionSummary;
+namespace Tests\Unit\Requests\QuestionSummary;
 
 use App\Http\Requests\QuestionSummary\StoreRequest;
 use Illuminate\Support\Facades\Validator;

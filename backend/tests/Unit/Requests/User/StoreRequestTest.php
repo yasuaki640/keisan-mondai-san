@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\App\Http\User;
+namespace Tests\Unit\Requests\User;
 
 use App\Http\Requests\User\StoreRequest;
 use Illuminate\Support\Facades\Validator;
