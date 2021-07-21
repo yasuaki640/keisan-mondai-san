@@ -31,6 +31,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('questions')->group(function () {
         Route::get('', [QuestionController::class, 'show']);
+        Route::post('', [QuestionController::class, 'storeByQuestionSummaryId']);
     });
 
     Route::prefix('question-summaries')->name('question-summaries.')->group(function () {

@@ -24,7 +24,7 @@ class StoreByQuestionSummaryIdRequest extends ApiRequest
     public function rules()
     {
         return [
-            'question_summary_id' => ['required', 'integer', 'exists:question_summaries']
+            'question_summary_id' => ['required', 'integer', 'exists:question_summaries,id']
         ];
     }
 }
