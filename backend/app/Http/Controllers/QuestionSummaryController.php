@@ -51,6 +51,9 @@ class QuestionSummaryController extends Controller
         return response()->json(new ShowResource($questionSummary));
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function index(): JsonResponse
     {
         $questionSummaries = $this->service->index();
