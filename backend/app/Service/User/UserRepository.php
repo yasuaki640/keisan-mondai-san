@@ -6,7 +6,6 @@ namespace App\Service\User;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 class UserRepository
 {

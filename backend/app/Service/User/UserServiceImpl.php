@@ -5,8 +5,6 @@ namespace App\Service\User;
 
 
 use App\Models\User;
-use App\Service\User\UserRepository;
-use App\Service\User\UserService;
 use Illuminate\Database\Eloquent\Collection;
 
 class UserServiceImpl implements UserService

@@ -85,6 +85,7 @@ class UserController extends Controller
         if ($user->id !== auth()->id()) throw new AuthenticationException("Can't update other than the logged-in user");
 
         $user = $this->service->update($user->id, $request->all());
+
         return response()->json(new UpdateResource($user));
     }
 
@@ -98,6 +99,7 @@ class UserController extends Controller
         if ($user->id !== auth()->id()) throw new AuthenticationException("Can't delete other than the logged-in user");
 
         $this->service->destroy($user->id);
+
         return \response()->json([], Response::HTTP_NO_CONTENT);
     }
 }
