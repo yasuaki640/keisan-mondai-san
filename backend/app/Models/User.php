@@ -69,12 +69,18 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    /**
+     * @return HasMany
+     */
     public function question_summaries(): HasMany
     {
         return $this->hasMany(QuestionSummary::class);
     }
 
     /**
+     * Hash password string.
+     * If string is already hashed. insert string as is.
+     *
      * @param string $password
      */
     public function setPasswordAttribute(string $password): void
