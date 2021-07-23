@@ -3,11 +3,13 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -71,4 +73,15 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(QuestionSummary::class);
     }
+
+    /**
+     * @param string $password
+     */
+    public function setPasswordAttribute(string $password): void
+    {
+        $this->attributes['password'] = Hash::needsRehash($password)
+            ? Hash::make($password)
+            : $password;
+    }
+
 }
