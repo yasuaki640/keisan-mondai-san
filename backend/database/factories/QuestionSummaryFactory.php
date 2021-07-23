@@ -32,6 +32,7 @@ class QuestionSummaryFactory extends Factory
             'answer_end_at' => $answerStartAt->modify('+10minutes'),
             'created_at' => now(),
             'updated_at' => now(),
+            'deleted_at' => null
         ];
     }
 

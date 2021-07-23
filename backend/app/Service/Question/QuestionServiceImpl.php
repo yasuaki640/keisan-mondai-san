@@ -39,6 +39,8 @@ class QuestionServiceImpl implements QuestionService
      */
     public function storeByQuestionSummaryId(int $questionSummaryId): array|Collection
     {
+        $this->questionSummaryRepository->findById($questionSummaryId);
+
         return [];
     }
 }

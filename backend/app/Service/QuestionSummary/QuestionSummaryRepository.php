@@ -6,6 +6,7 @@ namespace App\Service\QuestionSummary;
 
 use App\Models\QuestionSummary;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class QuestionSummaryRepository
@@ -13,6 +14,14 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class QuestionSummaryRepository
 {
+    /**
+     * @param int $questionSummaryId
+     * @return QuestionSummary
+     */
+    public function findById(int $questionSummaryId): QuestionSummary
+    {
+        return QuestionSummary::findOrFail($questionSummaryId);
+    }
 
     /**
      * @param array $params

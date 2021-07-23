@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Scopes\UserIdScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class QuestionSummary extends Model
@@ -42,5 +43,10 @@ class QuestionSummary extends Model
     protected static function booted()
     {
         static::addGlobalScope(new UserIdScope());
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
