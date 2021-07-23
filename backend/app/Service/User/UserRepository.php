@@ -19,6 +19,8 @@ class UserRepository
      */
     public function create(array $params): int
     {
+        $params['password'] = \Hash::make($params['password']);
+
         return User::create($params)->id;
     }
 
