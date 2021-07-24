@@ -45,8 +45,22 @@ class QuestionServiceImpl implements QuestionService
      */
     public function storeByQuestionSummaryId(int $questionSummaryId): array|Collection
     {
-        $this->questionSummaryRepository->findById($questionSummaryId);
+        $questionSummary = $this->questionSummaryRepository->findById($questionSummaryId);
+
+        $this->generateByQuestionSummary($questionSummary);
 
         return [];
+    }
+
+    private function generateByQuestionSummary(QuestionSummary $questionSummary)
+    {
+        //演算子を選択する
+
+        //2つの整数をランダムに生成する。
+        //回答を計算する
+
+        //上記で生成した問題をDBに永続化する。
+
+        //問題をリターンする。
     }
 }
