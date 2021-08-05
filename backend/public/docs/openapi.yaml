@@ -39,18 +39,18 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: dolores
+                  example: voluptatum
                 password:
                   type: string
                   description: ''
-                  example: enim
+                  example: voluptas
               required:
                 - name
                 - password
       security: []
   /api/users:
     post:
-      summary: ''
+      summary: 'Store user who has given params.'
       description: ''
       parameters:
         -
@@ -80,11 +80,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: necessitatibus
+                  example: aliquid
                 d_o_b:
                   type: string
                   description: 'Must be a valid date. Must be a date before or equal to <code>today</code>.'
-                  example: '1996-02-17'
+                  example: '1995-02-09'
                 sex:
                   type: integer
                   description: 'Must be at least 0. Must not be greater than 1.'
@@ -92,18 +92,18 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: lavada42@example.org
+                  example: borer.margarete@example.org
                 password:
                   type: string
                   description: 'Must be at least 8 characters.'
-                  example: crdr
+                  example: wdochv
               required:
                 - name
                 - d_o_b
                 - password
       security: []
     get:
-      summary: ''
+      summary: 'Index all users.'
       description: ''
       parameters:
         -
@@ -138,7 +138,7 @@ paths:
       security: []
   /api/users/me:
     get:
-      summary: ''
+      summary: 'Get login user info.'
       description: ''
       parameters:
         -
@@ -173,7 +173,7 @@ paths:
       security: []
   '/api/users/{user}':
     get:
-      summary: ''
+      summary: 'Show user info by given userId.'
       description: ''
       parameters:
         -
@@ -207,7 +207,7 @@ paths:
         - Endpoints
       security: []
     put:
-      summary: ''
+      summary: 'Update login user info.'
       description: ''
       parameters:
         -
@@ -237,11 +237,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: soluta
+                  example: blanditiis
                 d_o_b:
                   type: string
                   description: 'Must be a valid date in the format <code>Y-m-d</code>. Must be a date before or equal to <code>today</code>.'
-                  example: '2018-01-12'
+                  example: '2014-03-22'
                 sex:
                   type: integer
                   description: 'Must be at least 0. Must not be greater than 1.'
@@ -249,16 +249,16 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: tsenger@example.com
+                  example: romaguera.cristobal@example.com
                 password:
                   type: string
                   description: 'Must be at least 8 characters.'
-                  example: mxxat
+                  example: ''
               required:
                 - name
       security: []
     delete:
-      summary: ''
+      summary: 'Delete user by given userId.'
       description: ''
       parameters:
         -
@@ -284,13 +284,13 @@ paths:
         in: path
         name: user
         description: ''
-        example: 7
+        example: 19
         required: true
         schema:
           type: integer
   /api/questions:
     post:
-      summary: ''
+      summary: 'Store questions has given question summary id.'
       description: ''
       parameters:
         -
@@ -320,13 +320,13 @@ paths:
                 question_summary_id:
                   type: integer
                   description: ''
-                  example: 16
+                  example: 3
               required:
                 - question_summary_id
       security: []
   '/api/question-summaries/{questionSummary}':
     get:
-      summary: ''
+      summary: 'Show question summary info that has given id.'
       description: ''
       parameters:
         -
@@ -364,13 +364,13 @@ paths:
         in: path
         name: questionSummary
         description: ''
-        example: 3
+        example: 5
         required: true
         schema:
           type: integer
   /api/question-summaries:
     post:
-      summary: ''
+      summary: 'Store question summary that has given params.'
       description: ''
       parameters:
         -
@@ -400,17 +400,17 @@ paths:
                 operator:
                   type: string
                   description: 'Must be one of <code>add</code>, <code>sub</code>, <code>multi</code>, or <code>divide</code>.'
-                  example: divide
+                  example: sub
                 num_of_questions:
                   type: integer
                   description: ''
-                  example: 3
+                  example: 18
               required:
                 - operator
                 - num_of_questions
       security: []
     get:
-      summary: ''
+      summary: 'List all question summaries.'
       description: ''
       parameters:
         -

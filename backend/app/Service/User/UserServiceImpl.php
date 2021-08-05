@@ -28,6 +28,8 @@ class UserServiceImpl implements UserService
     }
 
     /**
+     * Persist user who has given params.
+     *
      * @param array $params
      * @return int
      */
@@ -37,6 +39,8 @@ class UserServiceImpl implements UserService
     }
 
     /**
+     * List all users.
+     *
      * @return Collection|array
      */
     public function index(): Collection|array
@@ -45,6 +49,8 @@ class UserServiceImpl implements UserService
     }
 
     /**
+     * Update user that has given ID.
+     *
      * @param int $id
      * @param array $params
      * @return User
@@ -55,6 +61,7 @@ class UserServiceImpl implements UserService
     }
 
     /**
+     * Delete user that has given ID.
      * @param int $id
      */
     public function destroy(int $id): void

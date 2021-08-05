@@ -32,6 +32,8 @@ class QuestionSummaryController extends Controller
     }
 
     /**
+     * Store question summary that has given params.
+     *
      * @param StoreRequest $request
      * @return JsonResponse
      */
@@ -43,6 +45,8 @@ class QuestionSummaryController extends Controller
     }
 
     /**
+     * Show question summary info that has given id.
+     *
      * @param QuestionSummary $questionSummary
      * @return JsonResponse
      */
@@ -52,6 +56,8 @@ class QuestionSummaryController extends Controller
     }
 
     /**
+     * List all question summaries.
+     *
      * @return JsonResponse
      */
     public function index(): JsonResponse

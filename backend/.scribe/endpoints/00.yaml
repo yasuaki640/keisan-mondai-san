@@ -19,13 +19,13 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: dolores
+        example: voluptatum
         type: string
       password:
         name: password
         description: ''
         required: true
-        example: enim
+        example: voluptas
         type: string
     responses: []
     responseFields: []
@@ -34,7 +34,7 @@ endpoints:
       - POST
     uri: api/users
     metadata:
-      title: ''
+      title: 'Store user who has given params.'
       description: ''
       authenticated: false
     headers:
@@ -47,13 +47,13 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: necessitatibus
+        example: aliquid
         type: string
       d_o_b:
         name: d_o_b
         description: 'Must be a valid date. Must be a date before or equal to <code>today</code>.'
         required: true
-        example: '1996-02-17'
+        example: '1995-02-09'
         type: string
       sex:
         name: sex
@@ -65,13 +65,13 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: lavada42@example.org
+        example: borer.margarete@example.org
         type: string
       password:
         name: password
         description: 'Must be at least 8 characters.'
         required: true
-        example: crdr
+        example: wdochv
         type: string
     responses: []
     responseFields: []
@@ -80,7 +80,7 @@ endpoints:
       - GET
     uri: api/users
     metadata:
-      title: ''
+      title: 'Index all users.'
       description: ''
       authenticated: false
     headers:
@@ -104,7 +104,7 @@ endpoints:
       - GET
     uri: api/users/me
     metadata:
-      title: ''
+      title: 'Get login user info.'
       description: ''
       authenticated: false
     headers:
@@ -128,7 +128,7 @@ endpoints:
       - GET
     uri: 'api/users/{user}'
     metadata:
-      title: ''
+      title: 'Show user info by given userId.'
       description: ''
       authenticated: false
     headers:
@@ -139,7 +139,7 @@ endpoints:
         name: user
         description: ''
         required: true
-        example: 7
+        example: 19
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -158,7 +158,7 @@ endpoints:
       - PUT
     uri: 'api/users/{user}'
     metadata:
-      title: ''
+      title: 'Update login user info.'
       description: ''
       authenticated: false
     headers:
@@ -169,7 +169,7 @@ endpoints:
         name: user
         description: ''
         required: true
-        example: 11
+        example: 7
         type: integer
     queryParameters: []
     bodyParameters:
@@ -177,13 +177,13 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: soluta
+        example: blanditiis
         type: string
       d_o_b:
         name: d_o_b
         description: 'Must be a valid date in the format <code>Y-m-d</code>. Must be a date before or equal to <code>today</code>.'
         required: false
-        example: '2018-01-12'
+        example: '2014-03-22'
         type: string
       sex:
         name: sex
@@ -195,13 +195,13 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: tsenger@example.com
+        example: romaguera.cristobal@example.com
         type: string
       password:
         name: password
         description: 'Must be at least 8 characters.'
         required: false
-        example: mxxat
+        example: ''
         type: string
     responses: []
     responseFields: []
@@ -210,7 +210,7 @@ endpoints:
       - DELETE
     uri: 'api/users/{user}'
     metadata:
-      title: ''
+      title: 'Delete user by given userId.'
       description: ''
       authenticated: false
     headers:
@@ -221,7 +221,7 @@ endpoints:
         name: user
         description: ''
         required: true
-        example: 12
+        example: 8
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -232,7 +232,7 @@ endpoints:
       - POST
     uri: api/questions
     metadata:
-      title: ''
+      title: 'Store questions has given question summary id.'
       description: ''
       authenticated: false
     headers:
@@ -245,7 +245,7 @@ endpoints:
         name: question_summary_id
         description: ''
         required: true
-        example: 16
+        example: 3
         type: integer
     responses: []
     responseFields: []
@@ -254,7 +254,7 @@ endpoints:
       - GET
     uri: 'api/question-summaries/{questionSummary}'
     metadata:
-      title: ''
+      title: 'Show question summary info that has given id.'
       description: ''
       authenticated: false
     headers:
@@ -265,7 +265,7 @@ endpoints:
         name: questionSummary
         description: ''
         required: true
-        example: 3
+        example: 5
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -284,7 +284,7 @@ endpoints:
       - POST
     uri: api/question-summaries
     metadata:
-      title: ''
+      title: 'Store question summary that has given params.'
       description: ''
       authenticated: false
     headers:
@@ -297,13 +297,13 @@ endpoints:
         name: operator
         description: 'Must be one of <code>add</code>, <code>sub</code>, <code>multi</code>, or <code>divide</code>.'
         required: true
-        example: divide
+        example: sub
         type: string
       num_of_questions:
         name: num_of_questions
         description: ''
         required: true
-        example: 3
+        example: 18
         type: integer
     responses: []
     responseFields: []
@@ -312,7 +312,7 @@ endpoints:
       - GET
     uri: api/question-summaries
     metadata:
-      title: ''
+      title: 'List all question summaries.'
       description: ''
       authenticated: false
     headers:

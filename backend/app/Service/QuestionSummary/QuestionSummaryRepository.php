@@ -15,6 +15,10 @@ use Illuminate\Database\Eloquent\Model;
 class QuestionSummaryRepository
 {
     /**
+     * Find question summary by id.
+     * If summary that has given id is not found,
+     * This function returns Exception
+     *
      * @param int $questionSummaryId
      * @return QuestionSummary
      */
@@ -24,6 +28,8 @@ class QuestionSummaryRepository
     }
 
     /**
+     * Persist question summary.
+     *
      * @param array $params
      * @return int
      */
@@ -33,6 +39,8 @@ class QuestionSummaryRepository
     }
 
     /**
+     * Find all question summaries.
+     *
      * @return Collection|array
      */
     public function findAll(): Collection|array

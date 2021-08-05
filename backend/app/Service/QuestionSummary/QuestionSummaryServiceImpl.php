@@ -27,6 +27,8 @@ class QuestionSummaryServiceImpl implements QuestionSummaryService
     }
 
     /**
+     * Prepare params and call repository function.
+     *
      * @param array $params
      * @return int
      */
@@ -41,6 +43,8 @@ class QuestionSummaryServiceImpl implements QuestionSummaryService
     }
 
     /**
+     * Call repository function that indexes user info
+     *
      * @return Collection
      */
     public function index(): Collection

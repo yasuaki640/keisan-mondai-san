@@ -51,7 +51,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: July 23 2021</li>
+            <li>Last updated: August 5 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -89,8 +89,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"dolores\",
-    \"password\": \"enim\"
+    \"name\": \"voluptatum\",
+    \"password\": \"voluptas\"
 }"
 </code></pre>
 
@@ -104,8 +104,8 @@ const headers = {
 };
 
 let body = {
-    "name": "dolores",
-    "password": "enim"
+    "name": "voluptatum",
+    "password": "voluptas"
 }
 
 fetch(url, {
@@ -176,7 +176,7 @@ fetch(url, {
     
     </form>
 
-            <h2 id="endpoints-POSTapi-users">POST api/users</h2>
+            <h2 id="endpoints-POSTapi-users">Store user who has given params.</h2>
 
 <p>
 </p>
@@ -192,11 +192,11 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"necessitatibus\",
-    \"d_o_b\": \"1996-02-17\",
+    \"name\": \"aliquid\",
+    \"d_o_b\": \"1995-02-09\",
     \"sex\": 1,
-    \"email\": \"lavada42@example.org\",
-    \"password\": \"crdr\"
+    \"email\": \"borer.margarete@example.org\",
+    \"password\": \"wdochv\"
 }"
 </code></pre>
 
@@ -210,11 +210,11 @@ const headers = {
 };
 
 let body = {
-    "name": "necessitatibus",
-    "d_o_b": "1996-02-17",
+    "name": "aliquid",
+    "d_o_b": "1995-02-09",
     "sex": 1,
-    "email": "lavada42@example.org",
-    "password": "crdr"
+    "email": "borer.margarete@example.org",
+    "password": "wdochv"
 }
 
 fetch(url, {
@@ -309,7 +309,7 @@ fetch(url, {
     
     </form>
 
-            <h2 id="endpoints-GETapi-users">GET api/users</h2>
+            <h2 id="endpoints-GETapi-users">Index all users.</h2>
 
 <p>
 </p>
@@ -400,7 +400,7 @@ vary: Origin
         </p>
                     </form>
 
-            <h2 id="endpoints-GETapi-users-me">GET api/users/me</h2>
+            <h2 id="endpoints-GETapi-users-me">Get login user info.</h2>
 
 <p>
 </p>
@@ -491,7 +491,7 @@ vary: Origin
         </p>
                     </form>
 
-            <h2 id="endpoints-GETapi-users--user-">GET api/users/{user}</h2>
+            <h2 id="endpoints-GETapi-users--user-">Show user info by given userId.</h2>
 
 <p>
 </p>
@@ -503,12 +503,12 @@ vary: Origin
 
 
 <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/users/7" \
+    --get "http://localhost/api/users/19" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/7"
+    "http://localhost/api/users/19"
 );
 
 const headers = {
@@ -591,7 +591,7 @@ vary: Origin
             </p>
                     </form>
 
-            <h2 id="endpoints-PUTapi-users--user-">PUT api/users/{user}</h2>
+            <h2 id="endpoints-PUTapi-users--user-">Update login user info.</h2>
 
 <p>
 </p>
@@ -603,20 +603,20 @@ vary: Origin
 
 
 <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/users/11" \
+    "http://localhost/api/users/7" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"soluta\",
-    \"d_o_b\": \"2018-01-12\",
+    \"name\": \"blanditiis\",
+    \"d_o_b\": \"2014-03-22\",
     \"sex\": 1,
-    \"email\": \"tsenger@example.com\",
-    \"password\": \"mxxat\"
+    \"email\": \"romaguera.cristobal@example.com\",
+    \"password\": \"\"
 }"
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/11"
+    "http://localhost/api/users/7"
 );
 
 const headers = {
@@ -625,11 +625,11 @@ const headers = {
 };
 
 let body = {
-    "name": "soluta",
-    "d_o_b": "2018-01-12",
+    "name": "blanditiis",
+    "d_o_b": "2014-03-22",
     "sex": 1,
-    "email": "tsenger@example.com",
-    "password": "mxxat"
+    "email": "romaguera.cristobal@example.com",
+    "password": ""
 }
 
 fetch(url, {
@@ -733,7 +733,7 @@ fetch(url, {
     
     </form>
 
-            <h2 id="endpoints-DELETEapi-users--user-">DELETE api/users/{user}</h2>
+            <h2 id="endpoints-DELETEapi-users--user-">Delete user by given userId.</h2>
 
 <p>
 </p>
@@ -745,12 +745,12 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/users/12" \
+    "http://localhost/api/users/8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/12"
+    "http://localhost/api/users/8"
 );
 
 const headers = {
@@ -816,7 +816,7 @@ fetch(url, {
             </p>
                     </form>
 
-            <h2 id="endpoints-POSTapi-questions">POST api/questions</h2>
+            <h2 id="endpoints-POSTapi-questions">Store questions has given question summary id.</h2>
 
 <p>
 </p>
@@ -832,7 +832,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"question_summary_id\": 16
+    \"question_summary_id\": 3
 }"
 </code></pre>
 
@@ -846,7 +846,7 @@ const headers = {
 };
 
 let body = {
-    "question_summary_id": 16
+    "question_summary_id": 3
 }
 
 fetch(url, {
@@ -909,7 +909,7 @@ fetch(url, {
     
     </form>
 
-            <h2 id="endpoints-GETapi-question-summaries--questionSummary-">GET api/question-summaries/{questionSummary}</h2>
+            <h2 id="endpoints-GETapi-question-summaries--questionSummary-">Show question summary info that has given id.</h2>
 
 <p>
 </p>
@@ -921,12 +921,12 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/question-summaries/3" \
+    --get "http://localhost/api/question-summaries/5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/question-summaries/3"
+    "http://localhost/api/question-summaries/5"
 );
 
 const headers = {
@@ -1009,7 +1009,7 @@ vary: Origin
             </p>
                     </form>
 
-            <h2 id="endpoints-POSTapi-question-summaries">POST api/question-summaries</h2>
+            <h2 id="endpoints-POSTapi-question-summaries">Store question summary that has given params.</h2>
 
 <p>
 </p>
@@ -1025,8 +1025,8 @@ vary: Origin
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"operator\": \"divide\",
-    \"num_of_questions\": 3
+    \"operator\": \"sub\",
+    \"num_of_questions\": 18
 }"
 </code></pre>
 
@@ -1040,8 +1040,8 @@ const headers = {
 };
 
 let body = {
-    "operator": "divide",
-    "num_of_questions": 3
+    "operator": "sub",
+    "num_of_questions": 18
 }
 
 fetch(url, {
@@ -1112,7 +1112,7 @@ fetch(url, {
     
     </form>
 
-            <h2 id="endpoints-GETapi-question-summaries">GET api/question-summaries</h2>
+            <h2 id="endpoints-GETapi-question-summaries">List all question summaries.</h2>
 
 <p>
 </p>

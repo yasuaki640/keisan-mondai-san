@@ -38,6 +38,8 @@ class UserController extends Controller
     }
 
     /**
+     * Index all users.
+     *
      * @return JsonResponse
      */
     public function index(): JsonResponse
@@ -47,6 +49,8 @@ class UserController extends Controller
     }
 
     /**
+     * Get login user info.
+     *
      * @return JsonResponse
      */
     public function me(): JsonResponse
@@ -55,6 +59,8 @@ class UserController extends Controller
     }
 
     /**
+     * Store user who has given params.
+     *
      * @param StoreRequest $request
      * @return JsonResponse
      */
@@ -66,6 +72,8 @@ class UserController extends Controller
     }
 
     /**
+     * Show user info by given userId.
+     *
      * @param User $user
      * @return JsonResponse
      */
@@ -75,6 +83,8 @@ class UserController extends Controller
     }
 
     /**
+     * Update login user info.
+     *
      * @param UpdateRequest $request
      * @param User $user
      * @return JsonResponse
@@ -90,6 +100,8 @@ class UserController extends Controller
     }
 
     /**
+     * Delete user by given userId.
+     *
      * @param User $user
      * @return JsonResponse
      * @throws AuthenticationException

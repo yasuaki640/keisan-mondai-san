@@ -31,6 +31,8 @@ class QuestionController extends Controller
     }
 
     /**
+     * Store questions has given question summary id.
+     *
      * @param StoreByQuestionSummaryIdRequest $request
      * @return JsonResponse
      */

@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "d272ba84-9e78-4970-b995-bb2e61e874fc",
+        "_postman_id": "7344c22b-723e-4cf2-b1c4-4de1f9831f02",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -42,7 +42,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"dolores\",\"password\":\"enim\"}"
+                            "raw": "{\"name\":\"voluptatum\",\"password\":\"voluptas\"}"
                         },
                         "description": "",
                         "auth": {
@@ -52,7 +52,7 @@
                     "response": []
                 },
                 {
-                    "name": "api\/users",
+                    "name": "Store user who has given params.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -74,7 +74,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"necessitatibus\",\"d_o_b\":\"1996-02-17\",\"sex\":1,\"email\":\"lavada42@example.org\",\"password\":\"crdr\"}"
+                            "raw": "{\"name\":\"aliquid\",\"d_o_b\":\"1995-02-09\",\"sex\":1,\"email\":\"borer.margarete@example.org\",\"password\":\"wdochv\"}"
                         },
                         "description": "",
                         "auth": {
@@ -84,7 +84,7 @@
                     "response": []
                 },
                 {
-                    "name": "api\/users",
+                    "name": "Index all users.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -133,7 +133,7 @@
                     ]
                 },
                 {
-                    "name": "api\/users\/me",
+                    "name": "Get login user info.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -182,7 +182,7 @@
                     ]
                 },
                 {
-                    "name": "api\/users\/{user}",
+                    "name": "Show user info by given userId.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -194,7 +194,7 @@
                                 {
                                     "id": "user",
                                     "key": "user",
-                                    "value": "7",
+                                    "value": "19",
                                     "description": ""
                                 }
                             ]
@@ -239,7 +239,7 @@
                     ]
                 },
                 {
-                    "name": "api\/users\/{user}",
+                    "name": "Update login user info.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -251,7 +251,7 @@
                                 {
                                     "id": "user",
                                     "key": "user",
-                                    "value": "11",
+                                    "value": "7",
                                     "description": ""
                                 }
                             ]
@@ -269,7 +269,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"soluta\",\"d_o_b\":\"2018-01-12\",\"sex\":1,\"email\":\"tsenger@example.com\",\"password\":\"mxxat\"}"
+                            "raw": "{\"name\":\"blanditiis\",\"d_o_b\":\"2014-03-22\",\"sex\":1,\"email\":\"romaguera.cristobal@example.com\",\"password\":\"\"}"
                         },
                         "description": "",
                         "auth": {
@@ -279,7 +279,7 @@
                     "response": []
                 },
                 {
-                    "name": "api\/users\/{user}",
+                    "name": "Delete user by given userId.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -291,7 +291,7 @@
                                 {
                                     "id": "user",
                                     "key": "user",
-                                    "value": "12",
+                                    "value": "8",
                                     "description": ""
                                 }
                             ]
@@ -316,7 +316,7 @@
                     "response": []
                 },
                 {
-                    "name": "api\/questions",
+                    "name": "Store questions has given question summary id.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -338,7 +338,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"question_summary_id\":16}"
+                            "raw": "{\"question_summary_id\":3}"
                         },
                         "description": "",
                         "auth": {
@@ -348,7 +348,7 @@
                     "response": []
                 },
                 {
-                    "name": "api\/question-summaries\/{questionSummary}",
+                    "name": "Show question summary info that has given id.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -360,7 +360,7 @@
                                 {
                                     "id": "questionSummary",
                                     "key": "questionSummary",
-                                    "value": "3",
+                                    "value": "5",
                                     "description": ""
                                 }
                             ]
@@ -405,7 +405,7 @@
                     ]
                 },
                 {
-                    "name": "api\/question-summaries",
+                    "name": "Store question summary that has given params.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -427,7 +427,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"operator\":\"divide\",\"num_of_questions\":3}"
+                            "raw": "{\"operator\":\"sub\",\"num_of_questions\":18}"
                         },
                         "description": "",
                         "auth": {
@@ -437,7 +437,7 @@
                     "response": []
                 },
                 {
-                    "name": "api\/question-summaries",
+                    "name": "List all question summaries.",
                     "request": {
                         "url": {
                             "protocol": "http",
