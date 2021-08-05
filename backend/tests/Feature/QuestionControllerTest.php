@@ -14,7 +14,9 @@ class QuestionControllerTest extends TestCase
     public function test_store_success()
     {
         $user = User::factory()->create();
-        $questionSummary = QuestionSummary::factory()->create();
+        $questionSummary = QuestionSummary::factory()->create([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)
             ->postJson('api/questions', [
