@@ -79,8 +79,9 @@ class UserControllerTest extends TestCase
             'password_confirmation' => 'password'
         ]);
 
-        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-        $response->assertJson([
+        $response
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertJson([
             'errors' => ['name' => ['The name has already been taken.']]
         ]);
     }

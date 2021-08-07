@@ -30,12 +30,13 @@ class LoginControllerTest extends TestCase
         ]);
 
 
-        $response->assertOk();
-        $response->assertJsonStructure([
-            'access_token',
-            'token_type',
-            'expires_in'
-        ]);
+        $response
+            ->assertOk()
+            ->assertJsonStructure([
+                'access_token',
+                'token_type',
+                'expires_in'
+            ]);
     }
 
     public function test_scenario_login_success_and_get_login_user_info_from_UserController_me()
@@ -54,12 +55,13 @@ class LoginControllerTest extends TestCase
             'password' => 'password'
         ]);
 
-        $response->assertOk();
-        $response->assertJsonStructure([
-            'access_token',
-            'token_type',
-            'expires_in'
-        ]);
+        $response
+            ->assertOk()
+            ->assertJsonStructure([
+                'access_token',
+                'token_type',
+                'expires_in'
+            ]);
 
         return $response->json('access_token');
     }
