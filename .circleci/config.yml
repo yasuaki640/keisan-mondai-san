@@ -56,7 +56,7 @@ jobs:
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
           working_directory: ./backend
-          command: cp .env.testing .env
+          command: mv .env.testing .env
       - run:
           name: publish jwt config
           working_directory: ./backend
@@ -68,21 +68,7 @@ jobs:
       - run:
           name: run migration
           working_directory: ./backend
-          command: php artisan migrate --env=testing --database=mysql_test --force
-      - run:
-          name: for debug
-          working_directory: ./backend
-          command: ls -la
-      - run:
-          name: for debug2
-          command: ls -la
-      - run:
-          name: for debug3
-          command: pwd
-      - run:
-          name: for debug4
-          working_directory: ./backend
-          command: pwd
+          command: php artisan migrate
       - run:
           name: run phpunit tests
           working_directory: ./backend
@@ -97,7 +83,7 @@ jobs:
       - run:
           name: check if can reset migrate
           working_directory: ./backend
-          command: php artisan migrate:rollback --env=testing --database=mysql_test --force
+          command: php artisan migrate:rollback
 
       - slack/notify:
           channel: "circle-ci"
