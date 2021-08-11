@@ -87,7 +87,7 @@ jobs:
           name: for debug3
           command: pwd
       - run:
-          name: for debug
+          name: for debug4
           working_directory: ./backend
           command: pwd
       - store_test_results:
