@@ -91,11 +91,9 @@ jobs:
             ./vendor/bin/phpunit --log-junit ./phpunit/junit.xml tests
           when: always
       - store_test_results:
-          working_directory: ./backend
-          path: ./phpunit
+          path: ./backend/phpunit
       - store_artifacts:
-          working_directory: ./backend
-          path: ./phpunit
+          path: ./backend/phpunit
       - run:
           name: check if can reset migrate
           working_directory: ./backend
