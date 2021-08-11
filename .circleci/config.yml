@@ -70,13 +70,6 @@ jobs:
           working_directory: ./backend
           command: php artisan migrate --env=testing --database=mysql_test --force
       - run:
-          name: run phpunit tests
-          working_directory: ./backend
-          command: |
-            mkdir -p ./phpunit
-            ./vendor/bin/phpunit --log-junit ./phpunit/junit.xml tests
-          when: always
-      - run:
           name: for debug
           working_directory: ./backend
           command: ls -la
@@ -90,6 +83,13 @@ jobs:
           name: for debug4
           working_directory: ./backend
           command: pwd
+      - run:
+          name: run phpunit tests
+          working_directory: ./backend
+          command: |
+            mkdir -p ./phpunit
+            ./vendor/bin/phpunit --log-junit ./phpunit/junit.xml tests
+          when: always
       - store_test_results:
           working_directory: ./backend
           path: ./phpunit
