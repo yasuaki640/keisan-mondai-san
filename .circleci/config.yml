@@ -76,6 +76,20 @@ jobs:
             mkdir -p ./phpunit
             ./vendor/bin/phpunit --log-junit ./phpunit/junit.xml tests
           when: always
+      - run:
+          name: for debug
+          working_directory: ./backend
+          command: ls -la
+      - run:
+          name: for debug2
+          command: ls -la
+      - run:
+          name: for debug3
+          command: pwd
+      - run:
+          name: for debug
+          working_directory: ./backend
+          command: pwd
       - store_test_results:
           working_directory: ./backend
           path: ./phpunit
