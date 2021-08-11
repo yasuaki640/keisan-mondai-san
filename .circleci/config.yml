@@ -32,7 +32,7 @@ jobs:
       - save_cache:
           key: v1-dependencies-{{ checksum "./backend/composer.json" }}
           paths:
-            - ./vendor
+            - ./backend/vendor
       - restore_cache:
           keys:
             - node-v1-{{ checksum "./backend/package.json" }}
@@ -43,7 +43,7 @@ jobs:
       - save_cache:
           key: node-v1-{{ checksum "./backend/package.json" }}
           paths:
-            - node_modules
+            - ./backend/node_modules
 
       # setup env
       - run:
