@@ -72,8 +72,16 @@ jobs:
       - run:
           name: run phpunit tests
           working_directory: ./backend
-          command: php artisan test --env==testing
-
+          command: |
+            mkdir -p ./phpunit
+            ./vendor/bin/phpunit --log-junit ./phpunit/junit.xml tests
+          when: always
+      - store_test_results:
+          working_directory: ./backend
+          path: ./phpunit
+      - store_artifacts:
+          working_directory: ./backend
+          path: ./phpunit
       - run:
           name: check if can reset migrate
           working_directory: ./backend
