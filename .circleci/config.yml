@@ -85,7 +85,7 @@ jobs:
           name: "テストの実行"
           command: phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
       - store_artifacts:
-          path:  build/coverage-report
+          path:  ./backend/build/coverage-report
       - run:
           name: check if can reset migrate
           working_directory: ./backend
