@@ -69,17 +69,6 @@ jobs:
           name: run migration
           working_directory: ./backend
           command: php artisan migrate
-#      - run:
-#          name: run phpunit tests
-#          working_directory: ./backend
-#          command: |
-#            mkdir -p ./phpunit
-#            ./vendor/bin/phpunit --log-junit ./phpunit/junit.xml tests
-#          when: always
-#      - store_test_results:
-#          path: ./backend/phpunit
-#      - store_artifacts:
-#          path: ./backend/phpunit
       - run:
           working_directory: ./backend
           name: "テストの実行"
