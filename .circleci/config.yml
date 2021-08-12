@@ -71,7 +71,7 @@ jobs:
           command: php artisan migrate
       - run:
           working_directory: ./backend
-          name: "テストの実行"
+          name: run php unit tests
           command:  phpdbg -qrr vendor/bin/phpunit --log-junit ./phpunit/junit.xml --coverage-html phpunit/coverage-report
       - store_test_results:
           path:  ./backend/phpunit
