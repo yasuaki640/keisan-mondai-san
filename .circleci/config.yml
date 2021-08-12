@@ -69,17 +69,23 @@ jobs:
           name: run migration
           working_directory: ./backend
           command: php artisan migrate
+#      - run:
+#          name: run phpunit tests
+#          working_directory: ./backend
+#          command: |
+#            mkdir -p ./phpunit
+#            ./vendor/bin/phpunit --log-junit ./phpunit/junit.xml tests
+#          when: always
+#      - store_test_results:
+#          path: ./backend/phpunit
+#      - store_artifacts:
+#          path: ./backend/phpunit
       - run:
-          name: run phpunit tests
           working_directory: ./backend
-          command: |
-            mkdir -p ./phpunit
-            ./vendor/bin/phpunit --log-junit ./phpunit/junit.xml tests
-          when: always
-      - store_test_results:
-          path: ./backend/phpunit
+          name: "テストの実行"
+          command: phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
       - store_artifacts:
-          path: ./backend/phpunit
+          path:  build/coverage-report
       - run:
           name: check if can reset migrate
           working_directory: ./backend
