@@ -84,7 +84,7 @@ jobs:
           working_directory: ./backend
           name: "テストの実行"
           command:  phpdbg -qrr vendor/bin/phpunit --coverage-xml ./phpunit/junit.xml --coverage-html phpunit/coverage-report
-      - store_artifacts:
+      - store_test_results:
           path:  ./backend/phpunit
       - store_artifacts:
           path:  ./backend/phpunit/coverage-report
