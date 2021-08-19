@@ -5,7 +5,7 @@ namespace App\Service\Question;
 
 
 use App\Models\QuestionSummary;
-use App\Service\Question\Generator\QuestionGenerator;
+use App\Service\Question\Generator\Generator;
 use App\Service\QuestionSummary\QuestionSummaryRepository;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -26,9 +26,9 @@ class QuestionServiceImpl implements QuestionService
     private QuestionSummaryRepository $questionSummaryRepository;
 
     /**
-     * @var QuestionGenerator
+     * @var Generator
      */
-    private QuestionGenerator $questionGenerator;
+    private Generator $questionGenerator;
 
     /**
      * QuestionServiceImpl constructor.

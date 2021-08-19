@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
  * Interface QuestionGenerator
  * @package App\Service\Question\Generator
  */
-interface QuestionGenerator
+interface Generator
 {
     /**
      * @param QuestionSummary $questionSummary
