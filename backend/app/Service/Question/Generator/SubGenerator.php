@@ -7,7 +7,7 @@ namespace App\Service\Question\Generator;
 use App\Models\QuestionSummary;
 use Illuminate\Database\Eloquent\Collection;
 
-class AdditionGenerator implements Generator
+class SubGenerator implements Generator
 {
 
     /**
