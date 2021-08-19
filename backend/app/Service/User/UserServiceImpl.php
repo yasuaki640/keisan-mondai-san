@@ -62,6 +62,7 @@ class UserServiceImpl implements UserService
 
     /**
      * Delete user that has given ID.
+     *
      * @param int $id
      */
     public function destroy(int $id): void
