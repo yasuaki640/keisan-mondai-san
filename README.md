@@ -1,5 +1,7 @@
 # 挫折した計算問題の襲来
 
+[![yasuaki640](https://circleci.com/gh/yasuaki640/keisan-mondai-san.svg?style=svg)](https://app.circleci.com/pipelines/github/yasuaki640/keisan-mondai-san)
+
 ## 概要
 
 小中学生レベルの計算問題を練習できるアプリ。  

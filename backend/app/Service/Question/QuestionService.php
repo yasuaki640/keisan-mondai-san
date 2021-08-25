@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Collection;
 interface QuestionService
 {
     /**
-     * jjj
      * @param int $questionSummaryId
      * @return array|Collection
      */
