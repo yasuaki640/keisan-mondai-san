@@ -4,7 +4,7 @@ orbs:
   slack: circleci/slack@4.4.2
 
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/php:8.0.3-fpm-node-browsers
       - image: circleci/mysql:8.0
@@ -220,3 +220,9 @@ jobs:
                 }
               ]
             }
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test
+      - php-cs-fixer
