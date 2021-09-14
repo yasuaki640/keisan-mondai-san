@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 
 namespace App\Service\Question\Generator;
 
@@ -12,6 +12,6 @@ class MultiGenerator implements Generator
 
     public function generate(QuestionSummary $questionSummary): Collection
     {
-        // TODO: Implement generate() method.
+        return new Collection();
     }
 }
