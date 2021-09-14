@@ -12,6 +12,6 @@ class DivideGenerator implements Generator
 
     public function generate(QuestionSummary $questionSummary): Collection
     {
-        // TODO: Implement generate() method.
+        return new Collection();
     }
 }
