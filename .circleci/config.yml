@@ -4,7 +4,7 @@ orbs:
   slack: circleci/slack@4.4.2
 
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/php:8.0.3-fpm-node-browsers
       - image: circleci/mysql:8.0
@@ -73,17 +73,16 @@ jobs:
           working_directory: ./backend
           name: run php unit tests
           command: |
-                mkdir -p ./phpunit
-                phpdbg -qrr vendor/bin/phpunit --log-junit ./phpunit/junit.xml --coverage-html ./phpunit/coverage-report
+            mkdir -p ./phpunit
+            phpdbg -qrr vendor/bin/phpunit --log-junit ./phpunit/junit.xml --coverage-html ./phpunit/coverage-report
       - store_test_results:
-          path:  ./backend/phpunit
+          path: ./backend/phpunit
       - store_artifacts:
-          path:  ./backend/phpunit/coverage-report
+          path: ./backend/phpunit/coverage-report
       - run:
           name: check if can reset migrate
           working_directory: ./backend
           command: php artisan migrate:rollback
-
       - slack/notify:
           channel: "circle-ci"
           event: pass
@@ -94,37 +93,8 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":tada::tada::tada: *Success!*"
+                    "text": ":tada::tada::tada: *Tests Success!*"
                   }
-                },
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Project:*\n${CIRCLE_PROJECT_REPONAME}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*When:*\n$(TZ=Asia/Tokyo date +'%Y/%m/%d %T')"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Job:*\n${CIRCLE_JOB}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Author:*\n${CIRCLE_USERNAME}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Branch:*\n${CIRCLE_BRANCH}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Tag:*\n${CIRCLE_TAG}"
-                    }
-                  ]
                 },
                 {
                   "type": "actions",
@@ -152,37 +122,8 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":japanese_ogre::japanese_ogre::japanese_ogre: *Failed* :bangbang:"
+                    "text": ":japanese_ogre::japanese_ogre::japanese_ogre: *Tests Failed* :bangbang:"
                   }
-                },
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Project:*\n${CIRCLE_PROJECT_REPONAME}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*When:*\n$(TZ=Asia/Tokyo date +'%Y/%m/%d %T')"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Job:*\n${CIRCLE_JOB}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Author:*\n${CIRCLE_USERNAME}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Branch:*\n${CIRCLE_BRANCH}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Tag:*\n${CIRCLE_TAG}"
-                    }
-                  ]
                 },
                 {
                   "type": "actions",
@@ -199,3 +140,94 @@ jobs:
                 }
               ]
             }
+
+  phpstan:
+    docker:
+      - image: circleci/php:8.0.3-fpm-node-browsers
+    steps:
+      - checkout
+      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install zip pdo_mysql
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            # "composer.lock" can be used if it is committed to the repo
+            - v1-dependencies-{{ checksum "./backend/composer.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          working_directory: ./backend
+          command: composer require --dev nunomaduro/larastan
+      - save_cache:
+          key: v1-dependencies-{{ checksum "./backend/composer.json" }}
+          paths:
+            - ./backend/vendor
+      - run:
+          working_directory: ./backend
+          command: ./vendor/bin/phpstan --memory-limit=512M
+      - save_cache:
+          key: v1-dependencies-{{ checksum "./backend/composer.json" }}
+          paths:
+            - ./backend/vendor
+      - slack/notify:
+          channel: "circle-ci"
+          event: pass
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":tada::tada::tada: *PHP CS Fixer Success!*"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Job"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}"
+                    }
+                  ]
+                }
+              ]
+            }
+      - slack/notify:
+          channel: "circle-ci"
+          event: fail
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":japanese_ogre::japanese_ogre::japanese_ogre: *PHP CS Fixer Failed* :bangbang:"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Job"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}"
+                    }
+                  ]
+                }
+              ]
+            }
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test
+      - phpstan
