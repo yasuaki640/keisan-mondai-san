@@ -15,7 +15,6 @@ jobs:
           MYSQL_ROOT_PASSWORD: 'root'
     steps:
       - checkout
-
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip pdo_mysql
 
@@ -44,7 +43,6 @@ jobs:
           key: node-v1-{{ checksum "./backend/package.json" }}
           paths:
             - ./backend/node_modules
-
       # setup env
       - run:
           name: install dockerize
@@ -111,7 +109,6 @@ jobs:
                 }
               ]
             }
-
       - slack/notify:
           channel: "circle-ci"
           event: fail
@@ -179,7 +176,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":tada::tada::tada: *PHP CS Fixer Success!*"
+                    "text": ":tada::tada::tada: *PHP Stan Success!*"
                   }
                 },
                 {
@@ -207,7 +204,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":japanese_ogre::japanese_ogre::japanese_ogre: *PHP CS Fixer Failed* :bangbang:"
+                    "text": ":japanese_ogre::japanese_ogre::japanese_ogre: *PHP Stan Failed* :bangbang:"
                   }
                 },
                 {
