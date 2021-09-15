@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -16,7 +17,7 @@ class Question extends Model
      * @var array
      */
     protected $fillable = [
-        'sentence',
+        'expression',
         'answer',
         'has_decimal_point',
         'operator',

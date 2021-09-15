@@ -15,7 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('sentence');
+            $table->string('expression');
             $table->decimal('answer');
             $table->tinyInteger('has_decimal_point');
             $table->enum('operator', ['add', 'sub', 'multi', 'divide']);

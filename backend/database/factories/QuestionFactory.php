@@ -22,7 +22,7 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            'sentence'
+            'expression'
         ];
     }
 }
