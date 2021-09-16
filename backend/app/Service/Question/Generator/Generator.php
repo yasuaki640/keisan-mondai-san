@@ -17,5 +17,5 @@ interface Generator
      * @param QuestionSummary $questionSummary
      * @return Collection
      */
-    public function generate(QuestionSummary $questionSummary): Collection;
+    public function execute(QuestionSummary $questionSummary): Collection;
 }

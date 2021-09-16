@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 class MultiGenerator implements Generator
 {
 
-    public function generate(QuestionSummary $questionSummary): Collection
+    public function execute(QuestionSummary $questionSummary): Collection
     {
         return new Collection();
     }

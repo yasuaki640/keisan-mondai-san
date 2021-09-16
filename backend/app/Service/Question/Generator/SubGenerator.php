@@ -13,7 +13,7 @@ class SubGenerator implements Generator
     /**
      * @inheritDoc
      */
-    public function generate(QuestionSummary $questionSummary): Collection
+    public function execute(QuestionSummary $questionSummary): Collection
     {
         return new Collection();
     }

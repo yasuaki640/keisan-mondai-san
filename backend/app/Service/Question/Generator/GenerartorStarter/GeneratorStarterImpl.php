@@ -67,7 +67,7 @@ class GeneratorStarterImpl implements GeneratorStarter
     {
         $this->generator = $this->getGenerator($questionSummary->operator);
 
-        return $this->generator->generate($questionSummary);
+        return $this->generator->execute($questionSummary);
     }
 
     /**
