@@ -36,6 +36,22 @@ class QuestionSummaryFactory extends Factory
         ];
     }
 
+    /**
+     * @return QuestionSummaryFactory
+     */
+    public function unanswered(): QuestionSummaryFactory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'answer_start_at' => null,
+                'answer_end_at' => null,
+            ];
+        });
+    }
+
+    /**
+     * @return string
+     */
     private function getRandomOperator(): string
     {
         $key = array_rand(QuestionSummary::OPERATOR_LIST);
