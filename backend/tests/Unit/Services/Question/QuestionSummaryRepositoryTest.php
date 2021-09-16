@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Service\Question;
+namespace Tests\Unit\Services\Question;
 
 use App\Models\QuestionSummary;
 use App\Service\QuestionSummary\QuestionSummaryRepository;
