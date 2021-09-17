@@ -34,4 +34,16 @@ class AddGeneratorTest extends TestCase
         $this->assertInstanceOf(Question::class, $actual);
         $this->assertSame(Question::OPERATOR_ADD, $actual->operator);
     }
+
+
+    public function test_makeQuestion_can_make_correct_answer_from_expression()
+    {
+        $question = $this->generator->makeQuestion();
+
+        [$l, $operator, $r] = explode(' ', $question->expression);
+
+        $this->assertSame($question->answer, intval($l) + intval($r));
+        $this->assertSame('+', $operator);
+
+    }
 }
