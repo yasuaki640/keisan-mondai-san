@@ -38,4 +38,14 @@ class SubGeneratorTest extends TestCase
         $this->assertSame(Question::OPERATOR_SUB, $actual->operator);
         $this->assertGreaterThanOrEqual(0, $actual->answer);
     }
+
+    public function test_makeQuestion_can_make_correct_answer_from_expression()
+    {
+        $question = $this->generator->makeQuestion();
+
+        [$l, $operator, $r] = explode(' ', $question->expression);
+
+        $this->assertSame($question->answer, intval($l) - intval($r));
+        $this->assertSame('-', $operator);
+    }
 }

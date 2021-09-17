@@ -35,7 +35,6 @@ class AddGeneratorTest extends TestCase
         $this->assertSame(Question::OPERATOR_ADD, $actual->operator);
     }
 
-
     public function test_makeQuestion_can_make_correct_answer_from_expression()
     {
         $question = $this->generator->makeQuestion();
@@ -44,6 +43,5 @@ class AddGeneratorTest extends TestCase
 
         $this->assertSame($question->answer, intval($l) + intval($r));
         $this->assertSame('+', $operator);
-
     }
 }

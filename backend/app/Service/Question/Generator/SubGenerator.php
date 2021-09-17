@@ -59,7 +59,7 @@ class SubGenerator implements Generator
         [$l, $r] = rsort($arr);
 
         return new Question([
-            'expression' => "{$l} + {$r}",
+            'expression' => "{$l} - {$r}",
             'answer' => $l - $r,
             'operator' => Question::OPERATOR_SUB
         ]);
