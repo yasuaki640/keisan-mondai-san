@@ -22,7 +22,7 @@ class SubGenerator implements Generator
     private QuestionRepository $questionRepository;
 
     /**
-     * AddGenerator constructor.
+     * Subenerator constructor.
      * @param QuestionRepository $questionRepository
      */
     public function __construct(QuestionRepository $questionRepository)
