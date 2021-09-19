@@ -6,11 +6,25 @@ namespace App\Service\Question\Generator;
 
 use App\Models\Question;
 use App\Models\QuestionSummary;
+use App\Service\Question\QuestionRepository;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 
 class DivideGenerator implements Generator
 {
+    /**
+     * @var QuestionRepository
+     */
+    private QuestionRepository $questionRepository;
+
+    /**
+     * DivideGenerator constructor.
+     * @param QuestionRepository $questionRepository
+     */
+    public function __construct(QuestionRepository $questionRepository)
+    {
+        $this->questionRepository = $questionRepository;
+    }
     /**
      * @inheritDoc
      * @return Question[]
