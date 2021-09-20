@@ -9,9 +9,9 @@ use Tests\TestCase;
 class StoreRequestTest extends TestCase
 {
     /**
-     * @param array
-     * @param array
-     * @param boolean
+     * @param array $keys
+     * @param array $values
+     * @param bool $expect
      * @dataProvider dataProvider
      */
     public function test_StoreRequest_validation(array $keys, array $values, bool $expect)
