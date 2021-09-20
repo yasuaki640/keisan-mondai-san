@@ -3,8 +3,11 @@
 namespace Tests\Unit\Services\Question\Generator;
 
 use App\Models\Question;
+use App\Models\QuestionSummary;
 use App\Service\Question\Generator\AddGenerator;
 use App\Service\Question\QuestionRepository;
+use Exception;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
@@ -13,6 +16,8 @@ use Tests\TestCase;
  */
 class AddGeneratorTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * @var AddGenerator
      */
@@ -43,5 +48,21 @@ class AddGeneratorTest extends TestCase
 
         $this->assertSame($question->answer, intval($l) + intval($r));
         $this->assertSame('+', $operator);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function test_execute()
+    {
+        $questionSummary = QuestionSummary::factory()->incomplete()->make([
+            'operator' => QuestionSummary::OPERATOR_ADD,
+            'num_of_questions' => 10
+        ]);
+
+        $actual = $this->generator->execute($questionSummary);
+
+        $this->assertCount(10, $actual);
+        $this->assertContainsOnlyInstancesOf(Question::class, $actual);
     }
 }

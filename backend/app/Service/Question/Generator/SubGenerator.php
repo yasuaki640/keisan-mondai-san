@@ -35,7 +35,7 @@ class SubGenerator implements Generator
      * @return Question[]
      * @throws Exception
      */
-    public function execute(QuestionSummary $questionSummary): Collection
+    public function execute(QuestionSummary $questionSummary): array
     {
         $questions = [];
         for ($i = 1; $i, $questionSummary->num_of_questions; $i++) {

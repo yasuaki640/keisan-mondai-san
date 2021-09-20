@@ -7,7 +7,6 @@ namespace App\Service\Question\Generator;
 use App\Models\Question;
 use App\Models\QuestionSummary;
 use App\Service\Question\QuestionRepository;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Interface QuestionGenerator
@@ -23,9 +22,9 @@ interface Generator
 
     /**
      * @param QuestionSummary $questionSummary
-     * @return Collection
+     * @return array
      */
-    public function execute(QuestionSummary $questionSummary): Collection;
+    public function execute(QuestionSummary $questionSummary): array;
 
     /**
      * @return Question

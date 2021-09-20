@@ -39,11 +39,10 @@ class QuestionSummaryFactory extends Factory
     /**
      * @return QuestionSummaryFactory
      */
-    public function unanswered(): QuestionSummaryFactory
+    public function incomplete(): QuestionSummaryFactory
     {
         return $this->state(function (array $attributes) {
             return [
-                'answer_start_at' => null,
                 'answer_end_at' => null,
             ];
         });
