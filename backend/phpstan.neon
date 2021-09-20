@@ -7,7 +7,7 @@ parameters:
         - app
         - tests
 
-    level: 2
+    level: 3
 
     excludePaths:
         - ./app/Providers/AuthServiceProvider.php

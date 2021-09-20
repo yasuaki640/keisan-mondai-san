@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Service\Question\Generator\GenerartorStarter;
 
 
+use App\Models\Question;
 use App\Models\QuestionSummary;
 use App\Service\Question\Generator\AddGenerator;
 use App\Service\Question\Generator\DivideGenerator;
@@ -61,9 +62,9 @@ class GeneratorStarterImpl implements GeneratorStarter
 
     /**
      * @param QuestionSummary $questionSummary
-     * @return Collection
+     * @return Question[]
      */
-    public function generateQuestions(QuestionSummary $questionSummary): Collection
+    public function generateQuestions(QuestionSummary $questionSummary): array
     {
         $this->generator = $this->getGenerator($questionSummary->operator);
 

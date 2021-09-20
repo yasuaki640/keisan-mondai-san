@@ -16,7 +16,7 @@ interface GeneratorStarter
 {
     /**
      * @param QuestionSummary $questionSummary
-     * @return Collection
+     * @return array
      */
-    public function generateQuestions(QuestionSummary $questionSummary): Collection;
+    public function generateQuestions(QuestionSummary $questionSummary): array;
 }
