@@ -13,6 +13,7 @@ class QuestionSummaryControllerTest extends TestCase
 
     public function test_store_success()
     {
+        /** @var User $user */
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
@@ -32,8 +33,10 @@ class QuestionSummaryControllerTest extends TestCase
 
     public function test_show_success()
     {
+        /** @var User $user */
         $user = User::factory()->create();
 
+        /** @var QuestionSummary $questionSummary */
         $questionSummary = QuestionSummary::factory()
             ->create(['user_id' => $user->id]);
 
@@ -62,6 +65,7 @@ class QuestionSummaryControllerTest extends TestCase
 
     public function test_index_success()
     {
+        /** @var User $user */
         $user = User::factory()
             ->has(QuestionSummary::factory()->count(3), 'question_summaries')
             ->create();

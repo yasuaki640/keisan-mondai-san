@@ -22,6 +22,7 @@ class LoginControllerTest extends TestCase
 
     public function test_login_success()
     {
+        /** @var User $user */
         $user = User::factory()->create();
 
         $response = $this->postJson('api/login', [

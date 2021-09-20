@@ -21,6 +21,7 @@ class QuestionSummaryRepositoryTest extends TestCase
 
     public function test_findById()
     {
+        /** @var QuestionSummary $expected */
         $expected = QuestionSummary::factory()->create();
 
         $this->actingAs($expected->user);

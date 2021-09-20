@@ -68,6 +68,7 @@ class UserControllerTest extends TestCase
 
     public function test_store_fail_validation_duplicate_name()
     {
+        /** @var User $user */
         $user = User::factory()->create();
 
         $response = $this->postJson('api/users', [
@@ -82,8 +83,8 @@ class UserControllerTest extends TestCase
         $response
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
             ->assertJson([
-            'errors' => ['name' => ['The name has already been taken.']]
-        ]);
+                'errors' => ['name' => ['The name has already been taken.']]
+            ]);
     }
 
     public function test_store_success()
@@ -147,6 +148,7 @@ class UserControllerTest extends TestCase
 
     public function test_me_success()
     {
+        /** @var User $user */
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
@@ -163,6 +165,7 @@ class UserControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
+        /** @var User $user */
         $response = $this->actingAs($user)
             ->putJson('api/users/' . $user->getKey(), [
                 'name' => 'yasu',
@@ -197,6 +200,7 @@ class UserControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
+        /** @var User $user */
         $response = $this->actingAs($user)
             ->putJson('api/users/' . $user->getKey(), [
                 'name' => 'yasu',
@@ -238,6 +242,7 @@ class UserControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
+        /** @var User $user */
         $response = $this->actingAs($user)
             ->deleteJson('api/users/' . $user->getKey());
 

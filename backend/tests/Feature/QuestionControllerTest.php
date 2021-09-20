@@ -13,7 +13,10 @@ class QuestionControllerTest extends TestCase
 
     public function test_store_success()
     {
+        /** @var User $user */
         $user = User::factory()->create();
+
+        /** @var QuestionSummary $questionSummary */
         $questionSummary = QuestionSummary::factory()->create([
             'user_id' => $user->id
         ]);
