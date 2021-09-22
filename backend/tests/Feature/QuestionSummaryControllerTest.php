@@ -37,8 +37,9 @@ class QuestionSummaryControllerTest extends TestCase
         $user = User::factory()->create();
 
         /** @var QuestionSummary $questionSummary */
-        $questionSummary = QuestionSummary::factory()
-            ->create(['user_id' => $user->id]);
+        $questionSummary = QuestionSummary::factory()->create([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)
             ->getJson('api/question-summaries/' . $questionSummary->id);
